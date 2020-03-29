@@ -3,6 +3,18 @@ const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
+const locales = {
+  el: {
+    path: 'el',
+    locale: 'Greek',
+    default: true,
+  },
+  en: {
+    path: 'en',
+    locale: 'English',
+  },
+};
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
@@ -16,8 +28,8 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
-              tags
               templateKey
+              locale
             }
           }
         }
@@ -32,43 +44,43 @@ exports.createPages = ({ actions, graphql }) => {
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach(edge => {
-      const id = edge.node.id
-      createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
-        ),
-        // additional data can be passed via context
-        context: {
-          id,
-        },
-      })
-    })
-
-    // Tag pages:
-    let tags = []
-    // Iterate through each post, putting all found tags into `tags`
-    posts.forEach(edge => {
-      if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags)
+      const locale = edge.node.frontmatter.locale
+      if (edge.node.frontmatter.templateKey != null) {
+        const id = edge.node.id
+        createPage({
+          path: edge.node.fields.slug,
+          component: path.resolve(
+            `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          ),
+          // additional data can be passed via context
+          context: {
+            id,
+            locale
+          },
+        })
       }
     })
-    // Eliminate duplicate tags
-    tags = _.uniq(tags)
+  })
+}
 
-    // Make tag pages
-    tags.forEach(tag => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
 
-      createPage({
-        path: tagPath,
-        component: path.resolve(`src/templates/tags.js`),
+  return new Promise(resolve => {
+    deletePage(page)
+
+    Object.keys(locales).map(lang => {
+      const localizedPath = locales[lang].default ? page.path : locales[lang].path + page.path
+
+      return createPage({
+        ...page,
+        path: localizedPath,
         context: {
-          tag,
+          locale: lang,
         },
       })
     })
+    resolve()
   })
 }
 
