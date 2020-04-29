@@ -1,9 +1,9 @@
 ---
 templateKey: work-item
-title: painting 1
-date: 2017-01-04T15:04:10.000Z
-image: /img/chemex.jpg
-description: painting 1 description
-type: mural
+title: "Παρισινή Κομμούνα  Μέρος Α: Ειλικρινής Φιλία"
+date: 2019-01-04T15:04:00.000Z
+description: Μικτή τεχνική σε καμβά
+image: /img/stelios-faitakis-greek-artist-pariscommuneparta-2019-optim.jpg
+type: painting
 ---
-![chemex](/img/chemex.jpg)
+![]()
