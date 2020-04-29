@@ -7,6 +7,6 @@ const Footer = class extends React.Component {
       </footer>
     )
   }
-}
+};
 
-export default Footer
+export default Footer;
