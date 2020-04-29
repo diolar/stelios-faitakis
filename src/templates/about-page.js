@@ -1,63 +1,55 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
+import bioImage from '../../static/img/bio-image.jpg';
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content
-
+const AboutPageTemplate = ({ title, paragraph1, paragraph2, paragraph3 }) => {
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <PageContent className="content" content={content} />
+    <div className="container">
+      <div className="row row--bio">
+        <div className="column column--left">
+          <div className="page-letter">
+            <div>
+              <svg viewBox="0 0 178 474" xmlns="http://www.w3.org/2000/svg">
+                <use xlinkHref="#pattern2" />
+              </svg>
+            </div>
+            <div id="beta-page" className="letter">
+              <svg viewBox="0 0 204 474" xmlns="http://www.w3.org/2000/svg">
+                <use xlinkHref="#beta" />
+              </svg>
+            </div>
+            <div>
+              <svg viewBox="0 0 178 474" xmlns="http://www.w3.org/2000/svg">
+                <use xlinkHref="#pattern3" />
+              </svg>
             </div>
           </div>
         </div>
+
+        <div className="column column--right">
+          <h1 className="page-title">{title}</h1>
+          <p>{paragraph1}</p>
+        </div>
+
+        <p className="column column--left">{paragraph2}</p>
+
+        <figure className="column column--right">
+          <PreviewCompatibleImage imageInfo={{ image: bioImage, alt: 'stelios faitakis', style: { display: 'block', maxWidth: '100%' } }} />
+          <figcaption>© Stella Mouzi, 2012</figcaption>
+        </figure>
+
+        <p className="column column--left">{paragraph3}</p>
+
       </div>
-    </section>
+    </div>
   )
-}
+};
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
-}
+};
 
-const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data
-
-  return (
-    <Layout>
-      <AboutPageTemplate
-        contentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        content={post.html}
-      />
-    </Layout>
-  )
-}
-
-AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
-}
-
-export default AboutPage
-
-export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
-      }
-    }
-  }
-`
+export default AboutPageTemplate;

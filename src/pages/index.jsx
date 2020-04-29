@@ -1,19 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-
-import Layout from '../components/Layout'
 import IndexPageTemplate from '../templates/index-page'
 
-const IndexPage = ({ pageContext: { locale }, data }) => {
-  const { frontmatter } = data.markdownRemark
-
+const IndexPage = ({ pageContext: { locale, pathname }, data }) => {
+  const { frontmatter } = data.markdownRemark;
   return (
-    <Layout>
-      <IndexPageTemplate {...frontmatter} locale={locale} />
-    </Layout>
+    <IndexPageTemplate {...frontmatter} locale={locale} pathname={pathname} />
   )
-}
+};
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -21,7 +16,7 @@ IndexPage.propTypes = {
       frontmatter: PropTypes.object,
     }),
   }),
-}
+};
 
 export default IndexPage
 
@@ -34,4 +29,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

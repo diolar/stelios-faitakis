@@ -1,38 +1,38 @@
 import React from 'react'
-
-import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 
-export default class BlogIndexPage extends React.Component {
-  render() {
-    return (
-      <Layout>
-        <div
-          className="full-width-image-container margin-top-0"
-          style={{
-            backgroundImage: `url('/img/blog-index.jpg')`,
-          }}
-        >
-          <h1
-            className="has-text-weight-bold is-size-1"
-            style={{
-              boxShadow: '0.5rem 0 0 #f40, -0.5rem 0 0 #f40',
-              backgroundColor: '#f40',
-              color: 'white',
-              padding: '1rem',
-            }}
-          >
-            Latest Stories
-          </h1>
-        </div>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <BlogRoll />
-            </div>
+
+const BlogIndexPage = ({ title = 'Νεα', content = '' }) => (
+  <div className="container">
+    <div className="row row--news">
+      <div className="column column--right">
+        <div className="page-letter">
+          <div>
+            <svg viewBox="0 0 178 474" xmlns="http://www.w3.org/2000/svg">
+              <use xlinkHref="#pattern3" />
+            </svg>
           </div>
-        </section>
-      </Layout>
-    )
-  }
-}
+          <div className="letter">
+            <svg viewBox="0 0 204 474" xmlns="http://www.w3.org/2000/svg">
+              <use xlinkHref="#ni" />
+            </svg>
+          </div>
+          <div>
+            <svg viewBox="0 0 178 474" xmlns="http://www.w3.org/2000/svg">
+              <use xlinkHref="#pattern4" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div className="column column--left">
+        <h1 className="page-title">{title}</h1>
+        <p>{content}</p>
+      </div>
+
+    </div>
+    <BlogRoll />
+  </div>
+);
+
+export default BlogIndexPage;

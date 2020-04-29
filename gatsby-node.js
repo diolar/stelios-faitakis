@@ -16,7 +16,7 @@ const locales = {
 };
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   return graphql(`
     {
@@ -37,16 +37,16 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `).then(result => {
     if (result.errors) {
-      result.errors.forEach(e => console.error(e.toString()))
+      result.errors.forEach(e => console.error(e.toString()));
       return Promise.reject(result.errors)
     }
 
-    const posts = result.data.allMarkdownRemark.edges
+    const posts = result.data.allMarkdownRemark.edges;
 
     posts.forEach(edge => {
-      const locale = edge.node.frontmatter.locale
+      const locale = edge.node.frontmatter.locale;
       if (edge.node.frontmatter.templateKey != null) {
-        const id = edge.node.id
+        const id = edge.node.id;
         createPage({
           path: edge.node.fields.slug,
           component: path.resolve(
@@ -55,34 +55,36 @@ exports.createPages = ({ actions, graphql }) => {
           // additional data can be passed via context
           context: {
             id,
-            locale
+            locale,
           },
         })
       }
     })
   })
-}
+};
 
 exports.onCreatePage = ({ page, actions }) => {
-  const { createPage, deletePage } = actions
+  const { createPage, deletePage } = actions;
 
   return new Promise(resolve => {
-    deletePage(page)
+    deletePage(page);
 
     Object.keys(locales).map(lang => {
-      const localizedPath = locales[lang].default ? page.path : locales[lang].path + page.path
-
+      const localizedPath = locales[lang].default ? page.path : locales[lang].path + page.path;
+      const pathname = page.path;
       return createPage({
         ...page,
         path: localizedPath,
+        pathname,
         context: {
           locale: lang,
+          pathname,
         },
       })
-    })
+    });
     resolve()
   })
-}
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
