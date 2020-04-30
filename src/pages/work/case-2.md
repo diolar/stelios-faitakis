@@ -1,9 +1,9 @@
 ---
 templateKey: work-item
-title: painting 2
-date: 2017-01-04T15:04:10.000Z
-image: /img/flavor_wheel.jpg
-description: painting 2 description
+title: Για τον Γιώργο
+date: 2019-01-03T15:04:00.000Z
+description: Μικτή τεχνική σε ξύλο
+image: /img/stelios-faitakis-greek-artist-george-2019-optim.jpg
 type: painting
 ---
-![chemex](/img/flavor_wheel.jpg)
+![]()
