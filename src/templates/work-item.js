@@ -19,10 +19,11 @@ export const WorkItemTemplate = ({
   const PostContent = contentComponent || Content;
 
   return (
-    <section className="container">
+    <>
       {helmet || ''}
-      <div className="work-item">
-        <div className="work-item__image">
+      <div className="grid grid--work-item">
+
+        <div>
           <PreviewCompatibleImage
             imageInfo={{
               image: image,
@@ -30,15 +31,16 @@ export const WorkItemTemplate = ({
             }}
           />
         </div>
-        <div className="work-item__content">
+
+        <div className="work-item">
           <div>
-            <h1 className="work-item__title">
+            <h1 className="h1">
               {title}
             </h1>
 
             <p className="work-item__description">{description}</p>
 
-            <div className="wave">
+            <div className="wave stroked-icon">
               <svg viewBox="0 0 312 10" xmlns="http://www.w3.org/2000/svg">
                 <path d="M311.484 9c-8.623 0-8.623-8-17.247-8-8.623 0-8.623 8-17.247 8-8.625 0-8.625-8-17.25-8-8.623 0-8.623 8-17.247 8s-8.624-8-17.249-8c-8.622 0-8.622 8-17.244 8-8.623 0-8.623-8-17.245-8-8.624 0-8.624 8-17.247 8-8.625 0-8.625-8-17.25-8-8.623 0-8.623 8-17.247 8s-8.624-8-17.248-8c-8.625 0-8.625 8-17.249 8-8.626 0-8.626-8-17.251-8-8.624 0-8.624 8-17.247 8-8.626 0-8.626-8-17.252-8-8.627 0-8.627 8-17.253 8-8.628 0-8.628-8-17.256-8S9.627 9 1 9" />
               </svg>
@@ -130,7 +132,8 @@ export const WorkItemTemplate = ({
           </div>
         </div>
       </div>
-    </section>
+    </>
+
   )
 };
 

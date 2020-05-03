@@ -52,8 +52,8 @@ const Timeline = ({ events }) => (
         ) : (
           <div className="timeline-spacing">
             <div className="timeline-link__icon">
-              <div className="icon">
-                <svg viewBox="0 0 85 148" xmlns="http://www.w3.org/2000/svg" fill="none">
+              <div className="icon stroked-icon">
+                <svg viewBox="0 0 85 148" xmlns="http://www.w3.org/2000/svg">
                   <use xlinkHref="#link-icon" />
                 </svg>
               </div>

@@ -4,9 +4,9 @@ import WorkList from '../components/WorkList';
 
 const WorkPageTemplate = ({ title, description, locale }) => {
   return (
-    <div className="container">
-      <div className="work-grid">
-        <div className="work-grid__letter">
+    <>
+      <div className="grid grid--work">
+        <div>
           <div className="page-letter">
             <div>
               <svg viewBox="0 0 178 474" xmlns="http://www.w3.org/2000/svg">
@@ -25,13 +25,13 @@ const WorkPageTemplate = ({ title, description, locale }) => {
             </div>
           </div>
         </div>
-        <div className="work-grid__content">
-          <h1 className="page-title">{title}</h1>
+        <div>
+          <h1 className="h1">{title}</h1>
           <p>{description}</p>
         </div>
       </div>
       <WorkList locale={locale} />
-    </div>
+    </>
   )
 };
 
