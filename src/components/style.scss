@@ -847,10 +847,8 @@ body.portal-open {
     font-family: monospace;
     align-self: flex-end;
     writing-mode: tb;
-    -ms-writing-mode: tb-rl;
     writing-mode: tb-rl;
     writing-mode: sideways-lr;
-    -ms-writing-mode: tb-lr;
     writing-mode: vertical-lr;
   }
 }
@@ -861,222 +859,6 @@ body.portal-open {
   &:after {
     content: '';
     @extend .absolute-fill;
-  }
-}
-
-.timeline {
-  &__item:first-child .timeline-link .timeline-link__icon {
-    position: relative;
-
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      right: 0;
-      width: 50%;
-      margin: 0 auto;
-      height: 2px;
-      background-color: currentColor;
-    }
-  }
-  // Odd Years
-  &__item:nth-child(odd) > .timeline-link {
-
-    & .timeline-link__year {
-      text-align: right;
-
-      & > .content {
-        padding-right: 0.5em;
-
-        &:after {
-          right: 0;
-          transform-origin: right;
-        }
-      }
-    }
-
-    & .timeline-link__events {
-      & > .content {
-        &:after {
-          left: 0;
-          transform-origin: left;
-        }
-      }
-      .description .content {
-        left: 0.5em;
-      }
-    }
-  }
-  // Even Years
-  &__item:nth-child(even) > .timeline-link {
-    flex-direction: row-reverse;
-
-    & .timeline-link__events {
-      text-align: right;
-
-      & > .content {
-        max-width: 100%;
-        padding-right: 0.5em;
-
-        &:after {
-          right: 0;
-          transform-origin: right;
-          left: -1em;
-        }
-      }
-
-      .description .content {
-        right: 0.5em;
-      }
-    }
-
-    & .timeline-link__year {
-      & > .content {
-        padding-left: 0.5em;
-
-        &:after {
-          left: 0;
-          transform-origin: left;
-        }
-      }
-    }
-  }
-}
-
-.timeline-spacing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &--end {
-    .timeline-link__icon .icon path.filled {
-      fill: currentColor;
-    }
-  }
-}
-
-.timeline-link {
-  display: flex;
-  transition: opacity 300ms ease-in;
-  cursor: default;
-
-  &__icon {
-    width: 10%;
-    max-width: 10%;
-    flex: 0 0 10%;
-
-    .icon {
-      padding-bottom: 174.1176470588%;
-
-      path {
-        fill: none;
-        stroke-width: 2;
-        stroke: currentColor;
-      }
-    }
-  }
-
-  &__events, &__year {
-    flex: 1 1 45%;
-    max-width: 45%;
-    transition: inherit;
-
-    & > .content {
-      white-space: nowrap;
-      display: inline;
-
-      position: relative;
-
-      &:after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        width: calc(100% + 1em);
-        height: 1px;
-        background-color: currentColor;
-        transform: scaleX(0);
-        transition: transform 250ms ease;
-      }
-    }
-
-    & .content {
-      font-size: 24px;
-      line-height: 1;
-      letter-spacing: 0.25em;
-      font-weight: 400;
-
-      height: 50%;
-      display: inline-block;
-    }
-  }
-
-  &__year {
-    opacity: 0.66;
-  }
-
-  &__events {
-    position: relative;
-    opacity: 0;
-
-    & .description {
-      position: relative;
-
-      & .content {
-        @extend .absolute-fill;
-        margin: 0;
-        padding-top: 0.5em;
-      }
-
-    }
-  }
-
-  &:hover {
-    .link {
-      opacity: 0;
-      transform: scaleX(0.2);
-    }
-
-    .eye-link {
-      transform: scale(1);
-      transition-delay: 0s;
-    }
-
-    .timeline-link__year,
-    .timeline-link__events {
-      opacity: 1;
-    }
-
-    .timeline-link__year .content::after,
-    .timeline-link__events .content::after {
-      transform: scaleX(1);
-      transition-delay: 100ms;
-    }
-
-  }
-}
-
-.link-to-eye {
-  display: block;
-
-  .link {
-    opacity: 1;
-  }
-
-  .eye-link {
-    transform: scale(0);
-    transition-delay: 150ms;
-  }
-
-  g {
-    transform-origin: center;
-    transition: all 250ms ease;
-  }
-
-  path {
-    fill: none;
-    stroke-width: 2;
-    stroke: currentColor;
   }
 }
 
@@ -1091,4 +873,8 @@ body.portal-open {
   height: 30px;
   border-radius: 15px / 45px;
   border: 1px solid currentColor;
+}
+
+.tl-edges {
+  overflow: hidden;
 }
