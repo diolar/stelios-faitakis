@@ -21,13 +21,15 @@ const TemplateWrapper = ({ children, pageContext: { locale, pathname } }) => {
         <meta property="og:image" content="/icons/icon-512x512.png" />
       </Helmet>
 
-      <Header locale={locale} path={pathname} languageSwitcher />
-      {children}
-      {pathname !== '/' && (
-        <Header locale={locale} path={pathname} />
-      )}
-      <NavBar prefix={locale === 'el'? '' : '/en'} />
-      <Footer />
+      <div className="container">
+        <Header locale={locale} path={pathname} languageSwitcher />
+        {children}
+        {pathname !== '/' && (
+          <Header locale={locale} path={pathname} />
+        )}
+        <NavBar prefix={locale === 'el'? '' : '/en'} />
+        <Footer />
+      </div>
     </>
   )
 };

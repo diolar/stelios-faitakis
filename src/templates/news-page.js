@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BlogRoll from '../components/BlogRoll';
+import Helmet from 'react-helmet';
 
 const NewsPageTemplate = ({
   title,
   description,
+  helmet,
   }) => {
   return (
-    <div className="container">
-      <div className="row row--news">
-        <div className="column column--right">
+    <>
+      {helmet}
+      <div className="grid grid--news">
+        <div>
+          <h1 className="h1">{title}</h1>
+          <p>{description}</p>
+        </div>
+
+        <div>
           <div className="page-letter">
             <div>
               <svg viewBox="0 0 178 474" xmlns="http://www.w3.org/2000/svg">
@@ -28,15 +36,10 @@ const NewsPageTemplate = ({
             </div>
           </div>
         </div>
-
-        <div className="column column--left">
-          <h1 className="page-title">{title}</h1>
-          <p>{description}</p>
-        </div>
-
       </div>
+
       <BlogRoll />
-    </div>
+    </>
   )
 };
 
@@ -49,7 +52,16 @@ const MewsPage = ({  pageContext: { title, description } }) => {
   return (
     <NewsPageTemplate
       title={title}
-      description={description} />
+      description={description}
+      helmet={
+        <Helmet>
+          <title>{title}</title>
+          <meta
+            name="description"
+            content={description}
+          />
+        </Helmet>
+      }/>
   )
 };
 
