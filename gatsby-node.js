@@ -40,17 +40,25 @@ exports.createPages = ({ actions, graphql }) => {
               titleEN
               description
               descriptionEN
-              body {
-                paragraph1
-                paragraph2
-                paragraph3
-              }
-              bodyEN {
-                paragraph1
-                paragraph2
-                paragraph3
-              }
               type
+              bio {
+                paragraph1 {
+                  el
+                  en
+                }
+                paragraph2{
+                  el
+                  en
+                }
+                paragraph3 {
+                  el
+                  en
+                }
+              }
+              timelineTitle {
+                el
+                en
+              }
             }
           }
         }
@@ -67,13 +75,25 @@ exports.createPages = ({ actions, graphql }) => {
     posts.forEach(({ node: { id, frontmatter: fm, fields} }, index) => {
       if (fm.templateKey != null) {
         let prev, next;
+        let localizedContext = {};
 
         Object.keys(locales).map(lang => {
           const pathname = fields.slug;
           const localizedPath = locales[lang].default ? pathname : locales[lang].path + pathname;
           const localizedTitle = locales[lang].default ? fm.title : fm.titleEN;
           const localizedDescription = locales[lang].default ? fm.description : fm.descriptionEN;
-          const localizedBody = locales[lang].default ? fm.body : fm.bodyEN;
+
+          if (fm.templateKey === 'about-page') {
+            localizedContext = {
+              ...localizedContext,
+              ...{ content: {
+                paragraph1: fm.bio.paragraph1[lang],
+                paragraph2: fm.bio.paragraph2[lang],
+                paragraph3: fm.bio.paragraph3[lang]}
+              }
+            };
+            localizedContext = {...localizedContext, ...{timelineTitle: fm.timelineTitle[lang]}}
+          }
 
           /* Add a previous and next url to the work-item and blog-post pages */
           if (hasPrevNextLinks.includes(fm.templateKey)) {
@@ -106,11 +126,11 @@ exports.createPages = ({ actions, graphql }) => {
               id,
               title: localizedTitle,
               description: localizedDescription,
-              body: localizedBody,
               locale: lang,
               pathname,
               prev,
-              next
+              next,
+              ...localizedContext,
             },
           })
         });
