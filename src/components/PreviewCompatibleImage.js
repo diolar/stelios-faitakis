@@ -3,23 +3,45 @@ import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 
 const PreviewCompatibleImage = ({ imageInfo }) => {
-  const { alt = '', childImageSharp, image, style } = imageInfo;
-
+  const { alt = '', childImageSharp, image, className, ...props } = imageInfo;
+  const classes = `protected-image ${className ? className : ''}`;
   if (!!image && !!image.childImageSharp) {
     return (
-      <Img style={style} fluid={image.childImageSharp.fluid} alt={alt} />
+      <Img
+        fluid={image.childImageSharp.fluid}
+        alt={alt}
+        draggable={false}
+        className={classes}
+        {...props}
+      />
     )
   }
 
   if (!!childImageSharp) {
-    return <Img style={style} fluid={childImageSharp.fluid} alt={alt} />
+    return (
+      <Img
+        luid={childImageSharp.fluid}
+        alt={alt} draggable={false}
+        className={classes}
+        {...props}
+      />
+    )
   }
 
-  if (!!image && typeof image === 'string')
-    return <img style={style} src={image} alt={alt} />
+  if (!!image && typeof image === 'string') {
+    return (
+      <img
+        style={props.imgStyle}
+        src={image}
+        alt={alt}
+        onClick={e => e.preventDefault()}
+        onContextMenu={e => e.preventDefault()}
+      />
+    )
+  }
 
   return null
-}
+};
 
 PreviewCompatibleImage.propTypes = {
   imageInfo: PropTypes.shape({
