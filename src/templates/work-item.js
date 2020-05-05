@@ -38,7 +38,7 @@ export const WorkItemTemplate = ({
               {title}
             </h1>
 
-            <p className="work-item__description">{description}</p>
+            <p className="work-item__description body">{description}</p>
 
             <div className="wave stroked-icon">
               <svg viewBox="0 0 312 10" xmlns="http://www.w3.org/2000/svg">

@@ -3,27 +3,20 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby';
 import Timeline from '../components/Timeline';
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
-import Pattern from '../components/Pattern';
+import PageLetter from '../components/PageLetter';
 import Helmet from 'react-helmet';
 
 export const AboutPageTemplate = ({ title, body, image, timeline, helmet }) => {
   return (
     <div className="page">
       {helmet}
-      <div className="grid grid--bio">
-        <div className="page__letter hidden-md" role="presentation">
-          <div>
-            <Pattern useSvgId="pattern2" />
-          </div>
-          <div id="beta-page" className="letter">
-            <svg viewBox="0 0 204 474" xmlns="http://www.w3.org/2000/svg">
-              <use xlinkHref="#beta" />
-            </svg>
-          </div>
-          <div>
-            <Pattern useSvgId="pattern3" />
-          </div>
-        </div>
+      <div className="page__grid grid grid--bio">
+        <PageLetter
+          id="beta"
+          patternLeft="pattern2"
+          patternRight="pattern3"
+          className="page__letter--left hidden-lg"
+        />
 
         <div className="order-3">
           <h1 className="h1 heading heading--gutters">{title}</h1>
@@ -42,24 +35,12 @@ export const AboutPageTemplate = ({ title, body, image, timeline, helmet }) => {
         </div>
 
         <div className="order-2">
-          <div className="page__letter hidden-sm" role="presentation">
-            <div>
-              <Pattern useSvgId="pattern2" />
-            </div>
-            <div id="beta-page" className="letter">
-              <svg viewBox="0 0 204 474" xmlns="http://www.w3.org/2000/svg">
-                <use xlinkHref="#beta" />
-              </svg>
-            </div>
-            <div>
-              <Pattern useSvgId="pattern3" />
-            </div>
-          </div>
+          <PageLetter id="beta" patternLeft="pattern2" patternRight="pattern3" className="visible-md" />
 
           <p className="body" style={{ marginTop: '2em' }}>{body.paragraph2}</p>
           <p className="body">{body.paragraph3}</p>
 
-          <h2 className="h1 heading heading--gutters" style={{ textAlign: 'center' }}>
+          <h2 className="h1 heading heading--gutters heading--center">
             {timeline.title}
           </h2>
 

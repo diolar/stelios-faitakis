@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql, StaticQuery } from 'gatsby';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -44,7 +44,7 @@ const WorkList = ({ data, locale }) => {
                 </svg>
               </span>
             </span>
-            <div className="h2 heading heading--gutters">{tabValues[tab][locale]}</div>
+            <div className="h2 heading heading--gutters heading--center">{tabValues[tab][locale]}</div>
             </a>
           </Tab>
         ))}
@@ -150,7 +150,7 @@ export default ({ locale }) => (
                   date(formatString: "YYYY")
                   image {
                     childImageSharp {
-                      fluid(maxWidth: 800, quality: 50) {
+                      fluid(maxWidth: 834, quality: 50) {
                         ...GatsbyImageSharpFluid
                       }
                     }

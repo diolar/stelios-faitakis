@@ -1,4 +1,8 @@
 .timeline {
+  max-width: 18rem;
+  margin-left: auto;
+  margin-right: auto;
+
   &__item:first-child .timeline-link .timeline-link__icon {
     position: relative;
 
@@ -32,22 +36,17 @@
 
     & .timeline-link__events {
       & > .content {
+        padding-left: 0.5em;
+
         &:after {
           left: 0;
           transform-origin: left;
         }
       }
 
-      .content {
-        padding-left: 0.5em;
-      }
-
       .description {
-
-        .content {
-          left: 0;
-          padding-left: 0.5em;
-        }
+        left: 0;
+        padding-left: 0.5em;
       }
     }
   }
@@ -70,10 +69,8 @@
       }
 
       .description {
-        .content {
-          right: 0.5em;
-          padding-right: 0.5em;
-        }
+        padding-right: 0.5em;
+        right: 0;
       }
     }
 
@@ -161,15 +158,10 @@
     opacity: 0;
 
     & .description {
-      position: relative;
-
-      & .content {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        padding-top: 0.5em;
-      }
-
+      position: absolute;
+      top: 50%;
+      margin: 0;
+      padding-top: 0.5em;
     }
   }
 
