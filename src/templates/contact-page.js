@@ -11,8 +11,8 @@ const ContactPageTemplate = ({
   return (
     <div className="grid grid--contact">
       <div>
-        <h1 className="h1">{title}</h1>
-        <ul className="list">
+        <h1 className="h1 heading heading--gutters">{title}</h1>
+        <ul className="list body">
           {email &&
           <li>
             <a className="external-link" href={`mailto:${email}`}>{email}</a>

@@ -14,6 +14,8 @@ public_folder: /img
 collections:
   - name: "news"
     label: "News"
+    editor:
+      preview: false
     folder: "src/pages/news"
     create: true
     slug: "{{slug}}"
@@ -27,6 +29,8 @@ collections:
 
   - name: "work"
     label: "Work"
+    editor:
+      preview: false
     folder: "src/pages/work"
     create: true
     slug: "{{slug}}"
@@ -44,6 +48,8 @@ collections:
 
   - name: "pages"
     label: "Pages"
+    editor:
+      preview: false
     files:
       - file: "src/pages/index.md"
         label: "Home"

@@ -18,7 +18,7 @@ const tabValues = {
   painting: {
     d: 'M59 0c32.584 0 59 26.415 59 59s-26.416 59-59 59C26.414 118 0 91.585 0 59S26.415 0 59 0zm0 2C27.52 2 2 27.52 2 59s25.52 57 57 57 57-25.52 57-57S90.48 2 59 2zm-.25 8c26.924 0 48.75 21.826 48.75 48.75S85.674 107.5 58.75 107.5 10 85.674 10 58.75 31.826 10 58.75 10zm0 2c-25.568 0-46.343 20.526-46.744 46H12v2h.016c.663 25.241 21.333 45.5 46.734 45.5 25.401 0 46.071-20.259 46.734-45.5h.016v-2l-.007-.001v-.022C105.082 32.514 84.312 12 58.75 12zm30.402 11.368c.295.239.514.41.657.516.123.09.292.254.508.491l.111.125L61.5 58l43.993-.001.007.751c0 .418-.005.835-.016 1.25H61l30 32.5-1.848 1.685L59 61 29.156 94.868 27 93V60H12.016a47.635 47.635 0 01-.01-2H27V24.5l1.02-.934L58.5 58h.5l30.152-34.632zM57 60H29v32l28-32zM29 28v30h26.5L29 28z',
     el: 'πίνακες',
-    en: 'painting',
+    en: 'paintings',
     defaultChecked: true,
   },
 };
@@ -35,8 +35,8 @@ const WorkList = ({ data, locale }) => {
     <Tabs defaultIndex={1} selectedTabClassName="active">
       <TabList className="tabs">
         {tabs && tabs.map(tab => (
-          <Tab key={tab} className="tab">
-            <div className="tab__content">
+          <Tab key={tab} className="tab" >
+            <a href={`#${tab}`} className="tab__content">
               <span className="tab__icon">
               <span className="icon">
                 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
@@ -44,8 +44,8 @@ const WorkList = ({ data, locale }) => {
                 </svg>
               </span>
             </span>
-              <span className="tab__title">{tabValues[tab][locale]}</span>
-            </div>
+            <div className="h2 heading heading--gutters">{tabValues[tab][locale]}</div>
+            </a>
           </Tab>
         ))}
       </TabList>
@@ -63,15 +63,15 @@ const WorkList = ({ data, locale }) => {
                   <div className="case__left">
                     <div className={isSameYear ? 'visually-hidden' : ''}>
                       <div className="case__year">
-                        <div className="year">
+                        <div className="heading h2">
                           {fm.date}
                         </div>
-                      </div>
-                      <div className="case__arrow">
-                        <div className="icon">
-                          <svg viewBox="0 0 242 1626" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M128.191-.5v1565.967c17.296-23.065 32.365-38.372 45.207-45.92 12.843-7.548 35.543-14.44 68.102-20.675v20.675c-33.456 0-60.122 10.57-80 31.71-19.878 21.138-30.98 45.886-33.309 74.243h-15.503c.561-20.123-7.805-42.813-25.098-68.069s-45.99-37.884-86.09-37.884v-20.675c31.78 5.416 54.655 12.308 68.625 20.675 13.97 8.367 28.157 23.674 42.563 45.92V-.5h15.503z" />
-                          </svg>
+                        <div className="case__arrow">
+                          <div className="icon">
+                            <svg viewBox="0 0 242 1626" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M128.191-.5v1565.967c17.296-23.065 32.365-38.372 45.207-45.92 12.843-7.548 35.543-14.44 68.102-20.675v20.675c-33.456 0-60.122 10.57-80 31.71-19.878 21.138-30.98 45.886-33.309 74.243h-15.503c.561-20.123-7.805-42.813-25.098-68.069s-45.99-37.884-86.09-37.884v-20.675c31.78 5.416 54.655 12.308 68.625 20.675 13.97 8.367 28.157 23.674 42.563 45.92V-.5h15.503z" />
+                            </svg>
+                          </div>
                         </div>
                       </div>
                     </div>

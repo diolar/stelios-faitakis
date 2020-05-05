@@ -33,7 +33,7 @@ const Timeline = ({ events }) => (
             </div>
             {description && (
               <div className="description">
-                <p className="content">{description}</p>
+                <span className="content">{description}</span>
               </div>
             )}
           </div>

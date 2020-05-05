@@ -1,28 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BlogRoll from '../components/BlogRoll';
 import Helmet from 'react-helmet';
+import NewsList from '../components/NewsList/NewsList';
+import Pattern from '../components/Pattern';
 
 const NewsPageTemplate = ({
   title,
   description,
+  locale,
   helmet,
   }) => {
   return (
-    <>
+    <div className="page">
       {helmet}
-      <div className="grid grid--news">
-        <div>
-          <h1 className="h1">{title}</h1>
-          <p>{description}</p>
-        </div>
-
-        <div>
-          <div className="page-letter">
+      <div className="page__grid grid grid--news">
+        <div style={{ order: 3 }}>
+          <div className="page__letter">
             <div>
-              <svg viewBox="0 0 178 474" xmlns="http://www.w3.org/2000/svg">
-                <use xlinkHref="#pattern3" />
-              </svg>
+              <Pattern useSvgId="pattern3" />
             </div>
             <div className="letter">
               <svg viewBox="0 0 204 474" xmlns="http://www.w3.org/2000/svg">
@@ -30,16 +25,19 @@ const NewsPageTemplate = ({
               </svg>
             </div>
             <div>
-              <svg viewBox="0 0 178 474" xmlns="http://www.w3.org/2000/svg">
-                <use xlinkHref="#pattern4" />
-              </svg>
+              <Pattern useSvgId="pattern4" />
             </div>
           </div>
         </div>
+
+        <div style={{ order: 2}}>
+          <h1 className="h1 heading heading--gutters">{title}</h1>
+          <p className="body">{description}</p>
+        </div>
       </div>
 
-      <BlogRoll />
-    </>
+      <NewsList locale={locale} />
+    </div>
   )
 };
 
@@ -48,11 +46,12 @@ NewsPageTemplate.propTypes = {
   description: PropTypes.string,
 };
 
-const MewsPage = ({  pageContext: { title, description } }) => {
+const MewsPage = ({  pageContext: { title, description, locale } }) => {
   return (
     <NewsPageTemplate
       title={title}
       description={description}
+      locale={locale}
       helmet={
         <Helmet>
           <title>{title}</title>
@@ -61,7 +60,8 @@ const MewsPage = ({  pageContext: { title, description } }) => {
             content={description}
           />
         </Helmet>
-      }/>
+      }
+    />
   )
 };
 
