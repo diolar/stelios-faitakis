@@ -8,14 +8,18 @@ import { pattern1, pattern2, pattern3, pattern4, pattern5 } from '../constants/p
 
 const NavBar = ({ prefix }) => {
   return (
-    <nav className="menu" role="navigation" aria-label="main-navigation">
+    <nav className="menu mobile-menu-experiment-beta" role="navigation" aria-label="main-navigation">
       <Link
         to={`${prefix}/work`}
         style={{ order: 2 }}
         className="menu__item letter menu-a"
       >
-        <Epsilon id="epsilon" />
-        <span className="menu__label">work</span>
+        <div>
+          <Epsilon id="epsilon" />
+        </div>
+        <span className="menu__label">
+          {prefix ? 'Work' : 'Εργο'}
+        </span>
       </Link>
       <div className="tint tint-a" />
       <Link
@@ -23,26 +27,38 @@ const NavBar = ({ prefix }) => {
         style={{ order: 4 }}
         className="menu__item letter  menu-b"
       >
-        <Beta id="beta" />
-        <span className="menu__label">bio</span>
+        <div>
+          <Beta id="beta" />
+        </div>
+        <span className="menu__label">
+           {prefix ? 'Bio' : 'Βίος'}
+        </span>
       </Link>
       <div className="tint tint-b" />
       <Link
         to={`${prefix}/news`}
         style={{ order: 6 }}
         className="menu__item letter menu-c">
-        <Ni id="ni" />
-        <span className="menu__label">news</span>
+        <div>
+          <Ni id="ni" />
+        </div>
+        <span className="menu__label">
+           {prefix ? 'News' : 'Νέα'}
+        </span>
       </Link>
       <div className="tint tint-c" />
       <Link
         to={`${prefix}/contact`}
         style={{ order: 8 }}
         className="menu__item letter menu-d">
-        <svg viewBox="0 0 204 474" xmlns="http://www.w3.org/2000/svg">
-          <use xlinkHref="#epsilon" />
-        </svg>
-        <span className="menu__label">contact</span>
+        <div>
+          <svg viewBox="0 0 204 474" xmlns="http://www.w3.org/2000/svg">
+            <use xlinkHref="#epsilon" />
+          </svg>
+        </div>
+        <span className="menu__label">
+           {prefix ? 'Contact' : 'Επαφή'}
+        </span>
       </Link>
       <div className="tint tint-d" />
 
