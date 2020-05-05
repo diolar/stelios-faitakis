@@ -15,22 +15,21 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section className="post single-post">
+    <section className="post-page">
       {helmet || ''}
-      <div className="container">
-        <div className="single-post__image">
-          <PreviewCompatibleImage
-            imageInfo={{
-              image: image,
-              alt: `featured image for post ${title}`,
-            }}
-          />
-        </div>
-
-        <h1 className="post__title">
+      <div className="post-page__image">
+        <PreviewCompatibleImage
+          imageInfo={{
+            image: image,
+            alt: `featured image for post ${title}`,
+          }}
+        />
+      </div>
+      <div className="post-page__content">
+        <h1 className="h2 heading heading--gutters">
           {title}
         </h1>
-        <PostContent content={content} className="post__excerpt" />
+        <PostContent content={content} className="post-page__body" />
       </div>
     </section>
   )
@@ -85,7 +84,7 @@ export const pageQuery = graphql`
         description
         featuredimage {
             childImageSharp {
-                fluid(maxWidth: 1440, quality: 100) {
+                fluid(maxWidth: 1440, quality: 50) {
                     ...GatsbyImageSharpFluid
                 }
             }

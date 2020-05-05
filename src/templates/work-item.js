@@ -19,9 +19,9 @@ export const WorkItemTemplate = ({
   const PostContent = contentComponent || Content;
 
   return (
-    <>
+    <div className="page">
       {helmet || ''}
-      <div className="grid grid--work-item">
+      <div className="page__grid grid grid--work-item">
 
         <div>
           <PreviewCompatibleImage
@@ -34,7 +34,7 @@ export const WorkItemTemplate = ({
 
         <div className="work-item">
           <div>
-            <h1 className="h1">
+            <h1 className="h1 heading heading--gutters">
               {title}
             </h1>
 
@@ -132,7 +132,7 @@ export const WorkItemTemplate = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
 
   )
 };
