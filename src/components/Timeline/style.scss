@@ -2,6 +2,8 @@
   max-width: 18rem;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 0;
+  list-style: none;
 
   &__item:first-child .timeline-link .timeline-link__icon {
     position: relative;

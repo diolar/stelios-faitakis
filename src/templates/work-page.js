@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import WorkList from '../components/WorkList';
 import PageLetter from '../components/PageLetter';
+import Page from '../components/Page';
 
 const WorkPageTemplate = ({ title, description, locale }) => {
   return (
-    <div className="page">
+    <Page locale={locale}>
       <div className="page__grid grid grid--work">
         <div>
           <PageLetter
@@ -21,7 +22,7 @@ const WorkPageTemplate = ({ title, description, locale }) => {
         </div>
       </div>
       <WorkList locale={locale} />
-    </div>
+    </Page>
   )
 };
 
@@ -41,7 +42,7 @@ const WorkPage = ({ pageContext: { title, description, locale } }) => {
 };
 
 WorkPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export default WorkPage;

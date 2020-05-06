@@ -46,7 +46,7 @@ exports.createPages = ({ actions, graphql }) => {
                   el
                   en
                 }
-                paragraph2{
+                paragraph2 {
                   el
                   en
                 }
@@ -58,6 +58,18 @@ exports.createPages = ({ actions, graphql }) => {
               timelineTitle {
                 el
                 en
+              }
+              terms {
+                el {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
+                en {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
               }
             }
           }
@@ -95,6 +107,13 @@ exports.createPages = ({ actions, graphql }) => {
             localizedContext = {...localizedContext, ...{timelineTitle: fm.timelineTitle[lang]}}
           }
 
+          if (fm.templateKey === 'terms-page') {
+            localizedContext = {
+              ...localizedContext,
+              ...{ content: fm.terms[lang].childMarkdownRemark.html}
+            };
+          }
+
           /* Add a previous and next url to the work-item and blog-post pages */
           if (hasPrevNextLinks.includes(fm.templateKey)) {
             const nextNode = index === 0 ? false : posts[index - 1].node;
@@ -115,7 +134,6 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
 
-          console.log('localizedPath', localizedPath);
           return createPage({
             id,
             path: localizedPath,

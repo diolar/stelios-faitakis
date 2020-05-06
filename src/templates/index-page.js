@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import Page from '../components/Page';
 
-const IndexPageTemplate = ({
-  title,
-  description,
-  locale,
-  helmet,
-}) => (
-  <>{helmet}</>
+const IndexPageTemplate = ({locale, helmet }) => (
+  <Page locale={locale} isHomePage>
+    {helmet}
+  </Page>
 );
 
 IndexPageTemplate.propTypes = {
@@ -17,13 +15,10 @@ IndexPageTemplate.propTypes = {
   locale: PropTypes.string,
 };
 
-const IndexPage = ({ pageContext: { title, description, locale, pathname } }) => {
+const IndexPage = ({ pageContext: { title, description, locale } }) => {
   return (
     <IndexPageTemplate
-      title={title}
-      description={description}
       locale={locale}
-      pathname={pathname}
       helmet={
         <Helmet>
           <title>{title}</title>

@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import PageLetter from '../components/PageLetter';
+import Page from '../components/Page';
 
 const ContactPageTemplate = ({
   title,
   email,
   instagram,
-  facebook
+  facebook,
+  locale,
 }) => {
   return (
-    <div className="page">
+    <Page locale={locale}>
       <div className="page__grid grid grid--contact">
         <div className="order-3">
           <PageLetter
@@ -39,7 +41,7 @@ const ContactPageTemplate = ({
           </ul>
         </div>
       </div>
-    </div>
+    </Page>
   )
 };
 
@@ -50,14 +52,16 @@ ContactPageTemplate.propTypes = {
   facebook: PropTypes.string,
 };
 
-const ContactPage = ({ data, pageContext: { title } }) => {
+const ContactPage = ({ data, pageContext: { title, locale } }) => {
   const { markdownRemark: post } = data;
   return (
     <ContactPageTemplate
       title={title}
       email={post.frontmatter.email}
       instagram={post.frontmatter.instagram}
-      facebook={post.frontmatter.facebook} />
+      facebook={post.frontmatter.facebook}
+      locale={locale}
+    />
   )
 };
 

@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby';
+import Page from '../components/Page';
 import Timeline from '../components/Timeline';
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 import PageLetter from '../components/PageLetter';
 import Helmet from 'react-helmet';
 
-export const AboutPageTemplate = ({ title, body, image, timeline, helmet }) => {
+export const AboutPageTemplate = ({ title, body, image, timeline, helmet, locale }) => {
   return (
-    <div className="page">
+    <Page locale={locale}>
       {helmet}
       <div className="page__grid grid grid--bio">
         <PageLetter
@@ -53,7 +54,7 @@ export const AboutPageTemplate = ({ title, body, image, timeline, helmet }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Page>
   )
 };
 
@@ -63,7 +64,7 @@ AboutPageTemplate.propTypes = {
   image: PropTypes.object,
 };
 
-const AboutPage = ({ data, pageContext: { title, description, content, timelineTitle } }) => {
+const AboutPage = ({ data, pageContext: { title, description, content, timelineTitle, locale } }) => {
   const { markdownRemark: post } = data;
   return (
     <AboutPageTemplate
@@ -74,6 +75,7 @@ const AboutPage = ({ data, pageContext: { title, description, content, timelineT
         title: timelineTitle,
         events: post.frontmatter.timelineEvents.sort((a, b) => a.year > b.year ? 1 : -1),
       }}
+      locale={locale}
       helmet={
         <Helmet>
           <title>{title}</title>

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import CookieConsent from 'react-cookie-consent';
 import Header from './Header';
 import Footer from '../components/Footer';
 import './style.scss';
 import useSiteMetadata from './SiteMetadata';
-import NavBar from './Navbar';
 
 const TemplateWrapper = ({ children, pageContext: { locale, pathname } }) => {
   const { title, description } = useSiteMetadata();
+  const defaultLang = locale === 'el';
   return (
     <>
       <Helmet>
@@ -22,14 +23,21 @@ const TemplateWrapper = ({ children, pageContext: { locale, pathname } }) => {
       </Helmet>
 
       <div className="container">
-        <Header locale={locale} path={pathname} languageSwitcher />
+        <Header component="header" locale={locale} path={pathname} languageSwitcher />
         {children}
-        {pathname !== '/' && (
-          <Header locale={locale} path={pathname} />
-        )}
-        <NavBar prefix={locale === 'el'? '' : '/en'} />
-        <Footer />
+        <Footer prefix={defaultLang ? '' : '/en'} />
       </div>
+      <CookieConsent
+        disableStyles={true}
+        buttonClasses="button-reset cookie-notice__button"
+        containerClasses="cookie-notice"
+        contentClasses="cookie-notice__content"
+        location="bottom"
+        buttonText={defaultLang ? "Αποδοχή" : "Allow"}
+        declineButtonText={defaultLang ? "Να μην επιτρέπονται" : "Decline"}
+        cookieName="gatsby-gdpr-google-analytics">
+        {defaultLang ? "Ο ιστότοπος χρησιμοποιεί cookies" : "This website uses cookies"}
+      </CookieConsent>
     </>
   )
 };

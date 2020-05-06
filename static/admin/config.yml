@@ -101,3 +101,13 @@ collections:
           - {label: "Email", name: "email", widget: "string"}
           - {label: "Facebook", name: "facebook", widget: "string"}
           - {label: "Instagram", name: "instagram", widget: "string"}
+      - file: "src/pages/terms-of-sale/index.md"
+        label: "Terms of Sale"
+        name: "terms"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "terms-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Title EN", name: "titleEN", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "DescriptionEN", name: "description", widget: "text"}
+          - {label: "Content", name: "terms", widget: "object", fields[{label: "EL", name: "el", widget: "markdown"}, {label: "EN", name: "en", widget: "markdown"}]}
