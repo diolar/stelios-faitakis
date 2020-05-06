@@ -34,8 +34,6 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
         style={props.imgStyle}
         src={image}
         alt={alt}
-        onClick={e => e.preventDefault()}
-        onContextMenu={e => e.preventDefault()}
       />
     )
   }

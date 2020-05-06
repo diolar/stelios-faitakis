@@ -48,6 +48,10 @@
 
   &__date {
     font-weight: 300;
+
+    > .svgIcon {
+      margin-right: 0.5em;
+    }
   }
 
   &__excerpt {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import NewsList from '../components/NewsList/NewsList';
 import PageLetter from '../components/PageLetter';
+import Page from '../components/Page';
 
 const NewsPageTemplate = ({
   title,
@@ -11,7 +12,7 @@ const NewsPageTemplate = ({
   helmet,
   }) => {
   return (
-    <div className="page">
+    <Page locale={locale}>
       {helmet}
       <div className="page__grid grid grid--news">
         <div  className="order-3">
@@ -30,7 +31,7 @@ const NewsPageTemplate = ({
       </div>
 
       <NewsList locale={locale} />
-    </div>
+    </Page>
   )
 };
 
@@ -59,7 +60,7 @@ const MewsPage = ({  pageContext: { title, description, locale } }) => {
 };
 
 MewsPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export default MewsPage;

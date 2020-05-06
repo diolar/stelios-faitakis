@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import logo from '../img/logo.svg'
 
-const Header = ({ locale, path, languageSwitcher }) => (
-  <header className="header">
+const Header = ({ component: Comp = "div", locale, path, languageSwitcher }) => (
+  <Comp className="header">
     <div className="header__brand">
       <Link to={locale === 'el' ? '/' : '/en'} title="Logo">
         <img src={logo} alt="stelios faitakis logo" />
@@ -27,7 +27,7 @@ const Header = ({ locale, path, languageSwitcher }) => (
         </div>
       )}
     </div>
-  </header>
+  </Comp>
 );
 
 export default Header
