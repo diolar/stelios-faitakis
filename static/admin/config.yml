@@ -34,6 +34,7 @@ collections:
     folder: "src/pages/work"
     create: true
     slug: "{{slug}}"
+    identifier_field: "titleEN"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "work-item"}
       - {label: "Title", name: "title", widget: "string"}
