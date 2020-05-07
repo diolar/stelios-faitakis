@@ -11,6 +11,5 @@ description: |-
 descriptionEN: |
   65,5 x 53,5
   Mixed media on wood
-bodyEN: Short description
+bodyEN: ""
 ---
-Συντομη περιγραφη
