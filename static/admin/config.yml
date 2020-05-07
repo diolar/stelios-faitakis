@@ -110,4 +110,4 @@ collections:
           - {label: "Title EN", name: "titleEN", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
           - {label: "DescriptionEN", name: "description", widget: "text"}
-          - {label: "Content", name: "terms", widget: "object", fields[{label: "EL", name: "el", widget: "markdown"}, {label: "EN", name: "en", widget: "markdown"}]}
+          - {label: "Content", name: "terms", widget: "object", fields: [{label: "EL", name: "el", widget: "markdown"}, {label: "EN", name: "en", widget: "markdown"}]}
