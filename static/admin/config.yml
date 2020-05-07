@@ -44,8 +44,8 @@ collections:
       - {label: "Image", name: "image", widget: image}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Description EN", name: "descriptionEN", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "BodyEN", name: "bodyEN", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "string", required: false}
+      - {label: "Body EN", name: "bodyEN", widget: "string", required: false}
 
   - name: "pages"
     label: "Pages"
@@ -82,7 +82,7 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Title EN", name: "titleEN", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
-          - {label: "DescriptionEN", name: "description", widget: "text"}
+          - {label: "Description EN", name: "description", widget: "text"}
       - file: "src/pages/news/index.md"
         label: "News"
         name: "news"
@@ -91,7 +91,7 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Title EN", name: "titleEN", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
-          - {label: "DescriptionEN", name: "description", widget: "text"}
+          - {label: "Description EN", name: "descriptionEN", widget: "text"}
       - file: "src/pages/contact/index.md"
         label: "Contact"
         name: "contact"
@@ -100,8 +100,8 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Title EN", name: "titleEN", widget: "string"}
           - {label: "Email", name: "email", widget: "string"}
-          - {label: "Facebook", name: "facebook", widget: "string"}
-          - {label: "Instagram", name: "instagram", widget: "string"}
+          - {label: "Facebook", name: "facebook", widget: "string", required: false}
+          - {label: "Instagram", name: "instagram", widget: "string", required: false}
       - file: "src/pages/terms-of-sale/index.md"
         label: "Terms of Sale"
         name: "terms"
@@ -110,5 +110,5 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Title EN", name: "titleEN", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
-          - {label: "DescriptionEN", name: "description", widget: "text"}
+          - {label: "Description EN", name: "descriptionEN", widget: "text"}
           - {label: "Content", name: "terms", widget: "object", fields: [{label: "EL", name: "el", widget: "markdown"}, {label: "EN", name: "en", widget: "markdown"}]}
