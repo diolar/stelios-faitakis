@@ -233,11 +233,9 @@ body.portal-open {
 
 .header {
   padding-top: 2rem;
-  padding-bottom: 2rem;
 
-  @media screen and (min-width: 667px) {
+  @media screen and (min-width: #{$min-width-md}) {
     padding-top: 2.8rem;
-    padding-bottom: 2.8rem;
   }
 
   &__brand {
@@ -260,7 +258,7 @@ body.portal-open {
     justify-content: center;
     align-items: center;
 
-    @media screen and (min-width: 667px) {
+    @media screen and (min-width: #{$min-width-md}) {
       flex-direction: row;
       margin-top: 2.8rem;
     }
@@ -343,6 +341,12 @@ body.portal-open {
   }
 }
 .page {
+  padding-top: 2rem;
+
+  @media screen and (min-width: #{$min-width-md}) {
+    padding-top: 2.8rem;
+  }
+
   & &__grid {
     @media screen and (max-width: $max-width-md) {
       display: block;
@@ -380,8 +384,16 @@ body.portal-open {
     };
   }
 
-  &__footer {
+  &__footer:not(:first-child) {
     margin-top: 2.8rem;
+
+    @media screen and (min-width: #{$min-width-md}) {
+      margin-top: 2rem;
+    }
+
+    & .menu {
+      margin-top: 2.8rem;
+    }
   }
 }
 
@@ -902,6 +914,7 @@ body.portal-open {
   &__description {
     line-height: 1.33;
     font-size: 18px;
+    font-style: italic;
 
     @media screen and (min-width: #{$min-width-md}) {
       font-size: 0.75rem;
@@ -909,6 +922,10 @@ body.portal-open {
   }
 
   &__pagination {
+    margin-top: 1rem;
+  }
+
+  .icon-button {
     margin-top: 1rem;
   }
 
