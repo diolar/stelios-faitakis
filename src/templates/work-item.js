@@ -26,11 +26,15 @@ export const WorkItemTemplate = ({
       {helmet || ''}
       <div className="page__grid grid grid--work-item">
 
-        <div>
+        <div className="work-item__image">
           <PreviewCompatibleImage
             imageInfo={{
               image: image,
               alt: `featured image for post ${title}`,
+              imgStyle: {
+                objectFit: 'contain',
+              },
+              className: 'work-item__img',
             }}
           />
         </div>

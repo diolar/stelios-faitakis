@@ -278,7 +278,7 @@ body.portal-open {
     margin-top: 0;
     margin-bottom: 0;
 
-    @media screen and (max-width: 667px) {
+    @media screen and (max-width: #{$max-width-sm}) {
       padding-left: 0;
       font-size: 16px;
       letter-spacing: 1em;
@@ -290,7 +290,7 @@ body.portal-open {
     @extend .heading;
     font-size: 24px;
 
-    @media screen and (max-width: 667px) {
+    @media screen and (max-width: #{$max-width-sm}) {
       margin-top: 1rem;
     }
 
@@ -776,6 +776,12 @@ body.portal-open {
     > * {
       width: 100%;
       max-width: 100%;
+    }
+  }
+
+  &__img {
+    > div {
+      padding-bottom: 100% !important;
     }
   }
 
