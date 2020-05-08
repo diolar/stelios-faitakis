@@ -36,7 +36,7 @@ export const WorkItemTemplate = ({
         </div>
 
         <div className="work-item">
-          <div>
+          <div className="work-item__meta">
             <h1 className="h1 heading heading--gutters">
               {title}
             </h1>
@@ -49,7 +49,7 @@ export const WorkItemTemplate = ({
               </svg>
             </div>
 
-            <PostContent content={content} />
+            {content && <PostContent content={content} />}
 
             <Modal>
               <PreviewCompatibleImage

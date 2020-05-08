@@ -1,0 +1,146 @@
+.case {
+  &__left {
+    text-align: center;
+  }
+
+  &__year {
+    margin: 0 auto;
+    word-break: break-all;
+    width: 2rem;
+  }
+
+  &__arrow {
+    width: 0.75em;
+    margin: 1em auto 0;
+
+    .icon {
+      padding-bottom: 671.9%;
+    }
+  }
+
+  &__thumb {
+    position: relative;
+    transition: .2s ease;
+
+    &::before {
+      content: '';
+      z-index: 1;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      mix-blend-mode: multiply;
+      transition: inherit;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    &:hover .case__meta {
+      opacity: 1;
+    }
+  }
+
+  &__meta {
+    z-index: 1;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    transition: inherit;
+
+    .heading {
+      margin-top: 1em;
+    }
+  }
+
+  &__icon {
+    .svgIcon {
+      width: 6.125rem;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    .svgIcon {
+      width: 10rem;
+      max-width: 100%;
+    }
+  }
+}
+
+// Tabs
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1280px;
+  margin: 2rem auto 3.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.tab {
+  padding: 0.5rem;
+  text-align: center;
+  transition: opacity 250ms ease-in;
+
+  &__content {
+    display: block;
+    opacity: 0.33;
+    overflow: hidden;
+
+    .heading {
+      @media screen and (max-width: 500px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &:hover .tab__content {
+    opacity: 0.66;
+  }
+
+  &:focus {
+    outline: none;
+
+    .tab__icon svg {
+      filter: drop-shadow(0 0 4px #fff);
+    }
+  }
+
+  &.active {
+    .tab__content {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 3.75rem;
+    max-width: 120px;
+  }
+
+  &__title {
+    display: block;
+  }
+}
+
+.tabPanel {
+  > * + * {
+    margin-top: 2rem;
+  }
+}

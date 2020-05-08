@@ -5,6 +5,6 @@ titleEN: Terms and Conditions of Sale
 description: Περιγραφη
 descriptionEN: Description
 terms:
-  el: '/terms.md'
-  en: '/terms.en.md'
+  elTerms: '/terms.md'
+  enTerms: '/terms.en.md'
 ---
