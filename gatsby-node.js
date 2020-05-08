@@ -60,12 +60,12 @@ exports.createPages = ({ actions, graphql }) => {
                 en
               }
               terms {
-                el {
+                elTerms {
                   childMarkdownRemark {
                     html
                   }
                 }
-                en {
+                enTerms {
                   childMarkdownRemark {
                     html
                   }
@@ -110,7 +110,7 @@ exports.createPages = ({ actions, graphql }) => {
           if (fm.templateKey === 'terms-page') {
             localizedContext = {
               ...localizedContext,
-              ...{ content: fm.terms[lang].childMarkdownRemark.html}
+              ...{ content: fm['terms'][`${[lang]}Terms`].childMarkdownRemark.html}
             };
           }
 

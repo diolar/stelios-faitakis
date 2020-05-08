@@ -34,12 +34,14 @@
     bottom: 1.4rem;
     left: 0;
     width: 100%;
+
+    outline: none !important;
   }
 
 
 
   &__close {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
 
