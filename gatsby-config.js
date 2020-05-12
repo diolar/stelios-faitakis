@@ -1,8 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: 'STELIOS FAITAKIS',
-    description:
-      'Stelios Faitakis Website',
+    title: 'Στέλιος Φαϊτάκης',
+    description: 'Στέλιος Φαϊτάκης Ιστοσελίδα',
+    headerTitle: {
+      el: 'Στελιος Φαϊτακης',
+      en: 'Stelios Faitakis',
+    }
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -69,7 +72,12 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
-    'gatsby-plugin-transition-link',
+    {
+      resolve: 'gatsby-plugin-transition-link',
+      options: {
+        injectPageProps: false,
+      },
+    },
     {
       resolve: 'gatsby-plugin-layout',
       options: {

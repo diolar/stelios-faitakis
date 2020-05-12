@@ -2,12 +2,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import CookieConsent from 'react-cookie-consent';
 import Header from './Header';
-import Footer from '../components/Footer';
 import './style.scss';
 import useSiteMetadata from './SiteMetadata';
+import BackToTop from '../components/BackToTop';
 
 const TemplateWrapper = ({ children, pageContext: { locale, pathname } }) => {
-  const { title, description } = useSiteMetadata();
+  const { title, description, headerTitle } = useSiteMetadata();
   const defaultLang = locale === 'el';
   return (
     <>
@@ -23,10 +23,18 @@ const TemplateWrapper = ({ children, pageContext: { locale, pathname } }) => {
       </Helmet>
 
       <div className="container">
-        <Header component="header" locale={locale} path={pathname} languageSwitcher />
+        <Header title={headerTitle[locale]} locale={locale} path={pathname} />
         {children}
-        <Footer prefix={defaultLang ? '' : '/en'} />
+        <div className="credits">
+          <ul className="list list--horizontal disclaimer">
+            <li>{`©Stelios Faitakis ${new Date().getFullYear()}`}</li>
+            <li>
+              Designed by <a href="https://susamicreative.com/" rel="noopener noreferrer">Susami</a>
+            </li>
+          </ul>
+        </div>
       </div>
+      <BackToTop />
       <CookieConsent
         disableStyles={true}
         buttonClasses="button-reset cookie-notice__button"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql, StaticQuery } from 'gatsby';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -7,47 +7,64 @@ import Icon from '../Icon';
 import { iconMural, iconPainting, iconPaper, iconDivider, iconEye } from '../../constants/svg';
 import './style.scss';
 
-
 const tabValues = {
   mural: {
     el: 'τοιχογραφίες',
     en: 'murals',
     icon: iconMural,
   },
+  painting: {
+    icon: iconPainting,
+    el: 'πίνακες',
+    en: 'paintings',
+  },
   paper: {
     icon: iconPaper,
     el: 'χαρτί',
     en: 'paper'
   },
-  painting: {
-    icon: iconPainting,
-    el: 'πίνακες',
-    en: 'paintings',
-    defaultChecked: true,
-  },
 };
 
 const WorkList = ({ data, locale }) => {
   const { group: types } = data.allMarkdownRemark;
+  const [selectedTab, setSelectedTab] = useState('painting');
   const tabs = [];
   const tabPanels = [];
   types.forEach(({ fieldValue, edges }) => {
     tabs.push(fieldValue);
     tabPanels.push(edges);
   });
+
+  useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    setSelectedTab(urlParams.get('view'));
+  }, []);
+
+  const onSelectTab = (tabIndex) => {
+    setSelectedTab(tabs[tabIndex]);
+    window.history.pushState("", "", `/work?view=${tabs[tabIndex]}`);
+  };
+
+  const selectedTabIndex = tabs.indexOf(selectedTab);
+  const prefix = locale === 'el' ? '' : 'en';
+
   return (
-    <Tabs defaultIndex={1} selectedTabClassName="active">
+    <Tabs
+      selectedIndex={selectedTabIndex > -1 ? selectedTabIndex : 1}
+      onSelect={onSelectTab}
+      selectedTabClassName="active">
       <TabList className="tabs">
         {tabs && tabs.map(tab => (
           <Tab key={tab} className="tab" >
-            <a href={`#${tab}`} className="tab__content">
+            <div className="tab__content">
               <span className="tab__icon">
-              <span className="icon">
-                <Icon {...tabValues[tab]['icon']} />
+                <span className="icon">
+                  <Icon {...tabValues[tab]['icon']} />
+                </span>
               </span>
-            </span>
-            <div className="h2 heading heading--gutters heading--center">{tabValues[tab][locale]}</div>
-            </a>
+              <div className="h2 heading heading--gutters heading--center">{tabValues[tab][locale]}</div>
+            </div>
           </Tab>
         ))}
       </TabList>
@@ -62,8 +79,10 @@ const WorkList = ({ data, locale }) => {
             return (
               <div key={id} className="case">
                 {addDivider && (
-                  <div className="case__divider">
-                    <Icon {...iconDivider} />
+                  <div className="grid grid--work-list grid--work-list-divider">
+                    <div className="case__divider">
+                      <Icon {...iconDivider} />
+                    </div>
                   </div>
                 )}
                 <article className="grid grid--work-list">
@@ -88,15 +107,15 @@ const WorkList = ({ data, locale }) => {
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: fm.image,
-                          alt: locale === 'en' ? fm.titleEN : fm.title,
+                          alt: prefix ? fm.titleEN : fm.title,
                         }}
                       />
-                      <Link to={fields.slug} className="case__meta">
+                      <Link to={`${prefix}${fields.slug}`} className="case__meta">
                         <div className="case__icon">
                           <Icon {...iconEye} />
                         </div>
                         <h2 className="heading heading--center h3">
-                          {locale === 'en' ? fm.titleEN : fm.title}
+                          {prefix ? fm.titleEN : fm.title}
                         </h2>
                       </Link>
                     </div>

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link'
 import Epsilon from './lettersSvg/Epsilon';
 import Beta from './lettersSvg/Beta';
 import Ni from './lettersSvg/Ni';
 import Pattern from './Pattern';
 import { pattern1, pattern2, pattern3, pattern4, pattern5 } from '../constants/patterns';
+import { transitionProps } from '../constants/settings';
 
 const NavBar = ({ prefix }) => {
   return (
@@ -13,6 +14,7 @@ const NavBar = ({ prefix }) => {
         to={`${prefix}/work`}
         style={{ order: 2 }}
         className="menu__item letter menu-a"
+        {...transitionProps}
       >
         <div>
           <Epsilon id="epsilon" />
@@ -26,6 +28,7 @@ const NavBar = ({ prefix }) => {
         to={`${prefix}/bio`}
         style={{ order: 4 }}
         className="menu__item letter  menu-b"
+        {...transitionProps}
       >
         <div>
           <Beta id="beta" />
@@ -38,7 +41,8 @@ const NavBar = ({ prefix }) => {
       <Link
         to={`${prefix}/news`}
         style={{ order: 6 }}
-        className="menu__item letter menu-c">
+        className="menu__item letter menu-c"
+        {...transitionProps}>
         <div>
           <Ni id="ni" />
         </div>
@@ -50,7 +54,8 @@ const NavBar = ({ prefix }) => {
       <Link
         to={`${prefix}/contact`}
         style={{ order: 8 }}
-        className="menu__item letter menu-d">
+        className="menu__item letter menu-d"
+        {...transitionProps}>
         <div>
           <svg viewBox="0 0 204 474" xmlns="http://www.w3.org/2000/svg">
             <use xlinkHref="#epsilon" />

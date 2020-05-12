@@ -25,7 +25,7 @@ export const BlogPostTemplate = ({
 
   return (
     <Page locale={locale}>
-      <div className="post-page">
+      <div className="post-page fade">
         {helmet || ''}
         <div className="post-page__image">
           <PreviewCompatibleImage

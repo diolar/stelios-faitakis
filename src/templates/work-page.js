@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import WorkList from '../components/WorkList';
 import PageLetter from '../components/PageLetter';
 import Page from '../components/Page';
+import {pattern1, pattern2} from '../constants/patterns';
+import Epsilon from '../components/lettersSvg/Epsilon';
 
 const WorkPageTemplate = ({ title, description, locale }) => {
   return (
@@ -10,18 +12,21 @@ const WorkPageTemplate = ({ title, description, locale }) => {
       <div className="page__grid grid grid--work">
         <div>
           <PageLetter
+            patternLeft={pattern1}
+            patternRight={pattern2}
             className="page__letter--left"
-            id="epsilon"
-            patternLeft="pattern1"
-            patternRight="pattern2"
-          />
+          >
+            <Epsilon />
+          </PageLetter>
         </div>
-        <div>
+        <div className="fade">
           <h1 className="h1 heading heading--gutters">{title}</h1>
           <p className="body">{description}</p>
         </div>
       </div>
-      <WorkList locale={locale} />
+      <div className="fade">
+        <WorkList locale={locale} />
+      </div>
     </Page>
   )
 };
