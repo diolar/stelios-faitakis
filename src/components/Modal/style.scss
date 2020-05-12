@@ -38,7 +38,13 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  &__open {
+    width: 100%;
 
+    &:focus {
+      outline: none;
+    }
+  }
 
   &__close {
     position: absolute;

@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Page from '../components/Page';
+import NavBar from '../components/Navbar';
 
-const IndexPageTemplate = ({locale, helmet }) => (
+const IndexPageTemplate = ({locale, helmet, from }) => (
   <Page locale={locale} isHomePage>
     {helmet}
+    <NavBar prefix={locale === 'el' ? '' : '/en'} from={from} />
   </Page>
 );
 
@@ -15,7 +17,7 @@ IndexPageTemplate.propTypes = {
   locale: PropTypes.string,
 };
 
-const IndexPage = ({ pageContext: { title, description, locale } }) => {
+const IndexPage = ({ pageContext: { title, description, locale }}) => {
   return (
     <IndexPageTemplate
       locale={locale}

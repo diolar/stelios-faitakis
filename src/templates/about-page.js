@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 import Page from '../components/Page';
 import Timeline from '../components/Timeline';
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 import PageLetter from '../components/PageLetter';
-import Helmet from 'react-helmet';
+import Beta from '../components/lettersSvg/Beta';
+import { pattern2, pattern3 } from '../constants/patterns';
 
 export const AboutPageTemplate = ({ title, body, image, timeline, helmet, locale }) => {
   return (
@@ -13,13 +15,14 @@ export const AboutPageTemplate = ({ title, body, image, timeline, helmet, locale
       {helmet}
       <div className="page__grid grid grid--bio">
         <PageLetter
-          id="beta"
-          patternLeft="pattern2"
-          patternRight="pattern3"
+          patternLeft={pattern2}
+          patternRight={pattern3}
           className="page__letter--left hidden-lg"
-        />
+        >
+          <Beta />
+        </PageLetter>
 
-        <div className="order-3">
+        <div className="order-3 fade">
           <h1 className="h1 heading heading--gutters">{title}</h1>
 
           <p className="body">{body.paragraph1}</p>
@@ -36,16 +39,25 @@ export const AboutPageTemplate = ({ title, body, image, timeline, helmet, locale
         </div>
 
         <div className="order-2">
-          <PageLetter id="beta" patternLeft="pattern2" patternRight="pattern3" className="visible-md" />
+          <PageLetter
+            patternLeft={pattern2}
+            patternRight={pattern3}
+            className="page__letter--left visible-md"
+          >
+            <Beta />
+          </PageLetter>
 
-          <p className="body" style={{ marginTop: '2em' }}>{body.paragraph2}</p>
-          <p className="body">{body.paragraph3}</p>
+          <div className="fade">
+            <p className="body" style={{ marginTop: '2em' }}>{body.paragraph2}</p>
+            <p className="body">{body.paragraph3}</p>
 
-          <h2 className="h1 heading heading--gutters heading--center">
-            {timeline.title}
-          </h2>
+            <h2 className="h1 heading heading--gutters heading--center">
+              {timeline.title}
+            </h2>
 
-          <Timeline events={timeline.events} />
+            <Timeline events={timeline.events} />
+          </div>
+
           <div className="visually-hidden">
             <svg id="link-icon" className="stroked-icon" viewBox="0 0 85 148" xmlns="http://www.w3.org/2000/svg">
               <path d="M44.875,1 L40.125,1 C35.375,17 33,29 33,37 C33,45 35.375,57 40.125,73 L44.875,73 C49.625,61 52,49 52,37 C52,25 49.625,13 44.875,1 Z" />

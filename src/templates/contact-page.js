@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
+import {graphql, Link} from 'gatsby';
 import PageLetter from '../components/PageLetter';
 import Page from '../components/Page';
+import {pattern4, pattern5} from '../constants/patterns';
+import Epsilon from '../components/lettersSvg/Epsilon';
 
 const ContactPageTemplate = ({
   title,
@@ -11,19 +13,21 @@ const ContactPageTemplate = ({
   facebook,
   locale,
 }) => {
+  const prefix = locale === 'el' ? '' : '/en';
   return (
     <Page locale={locale}>
       <div className="page__grid grid grid--contact">
         <div className="order-3">
           <PageLetter
+            patternLeft={pattern4}
+            patternRight={pattern5}
             className="page__letter--right"
-            id="epsilon"
-            patternLeft="pattern4"
-            patternRight="pattern5"
-          />
+          >
+            <Epsilon />
+          </PageLetter>
         </div>
 
-        <div className="order-2">
+        <div className="order-2 fade">
           <h1 className="h1 heading heading--gutters">{title}</h1>
           <ul className="list body">
             {email &&
@@ -38,6 +42,9 @@ const ContactPageTemplate = ({
             {facebook &&
             <li>fb: @{facebook}</li>
             }
+            <li>
+              <Link to={`${prefix}/terms-of-sale`}>{prefix ? 'Terms of Sale' : 'Όροι Πώλησης'}</Link>
+            </li>
           </ul>
         </div>
       </div>

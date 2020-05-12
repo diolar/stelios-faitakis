@@ -13,13 +13,13 @@ const EyeIcon = () => (
   </div>
 );
 
-const Modal = ({ children }) => {
+const Modal = ({ children, trigger }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <button onClick={() => setOpen(true)} className="icon-button button-reset">
-        <EyeIcon />
+      <button onClick={() => setOpen(true)} className="button-reset modal__open">
+        {trigger}
       </button>
       <ReactModal
         isOpen={open}
