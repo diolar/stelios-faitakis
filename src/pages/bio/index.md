@@ -58,4 +58,6 @@ timelineEvents:
   - year: "1995"
     title: Event 1995
     description: Description for event
+cv: /uploads/cv.pdf
+publications: publications
 ---

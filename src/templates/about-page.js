@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby';
+import Link from 'gatsby-plugin-transition-link';
 import Helmet from 'react-helmet';
 import Page from '../components/Page';
 import Timeline from '../components/Timeline';
@@ -8,6 +9,8 @@ import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 import PageLetter from '../components/PageLetter';
 import Beta from '../components/lettersSvg/Beta';
 import { pattern2, pattern3 } from '../constants/patterns';
+import Icon from '../components/Icon';
+import { iconPaper } from '../constants/svg'
 
 export const AboutPageTemplate = ({ title, body, image, timeline, helmet, locale }) => {
   return (
@@ -50,6 +53,21 @@ export const AboutPageTemplate = ({ title, body, image, timeline, helmet, locale
           <div className="fade">
             <p className="body" style={{ marginTop: '2em' }}>{body.paragraph2}</p>
             <p className="body">{body.paragraph3}</p>
+
+            <div className="icon-list">
+              <a href="/uploads/cv.pdf" target="_blank" rel="noopener noreferrer">
+              <span className="h1">
+                <Icon {...iconPaper} />
+              </span>
+                <div className="h4 heading heading--gutters heading--center">Πλήρες Βιογραφικό</div>
+              </a>
+              <Link to="/tags/publications">
+              <span className="h1">
+                <Icon {...iconPaper} />
+              </span>
+                <div className="h4 heading heading--gutters heading--center">Δημοσιεύσεις</div>
+              </Link>
+            </div>
 
             <h2 className="h1 heading heading--gutters heading--center">
               {timeline.title}

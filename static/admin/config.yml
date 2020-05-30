@@ -26,6 +26,7 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list", fields: [{label: Tag, name: 'tag', widget: 'string'}, {label: 'Title', name: 'title', widget: object, fields: [{ label: "EL", name: "el", widget: string }, { label: "EN", name: "en", widget: string }]}]}
 
   - name: "work"
     label: "Work"
@@ -41,7 +42,8 @@ collections:
       - {label: "Title EN", name: "titleEN", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Type", name: "type", widget: "select", options: ["mural", "painting", "paper"]}
-      - {label: "Image", name: "image", widget: image}
+      - {label: "Featured Image", name: "image", widget: image}
+      - {label: "Images", name: "images", widget: list, fields: [{ label: "Image", name: "image", widget: image }, { label: "Description", name: "alt", widget: string }], required: false}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Description EN", name: "descriptionEN", widget: "text"}
       - {label: "Body", name: "body", widget: "string", required: false}
@@ -74,6 +76,8 @@ collections:
           - {label: "Image", name: "image", widget: "image"}
           - {label: "Timeline Title", name: "timelineTitle", widget: "object", fields: [{label: 'EL', name: 'elTimelineTitle', widget: 'string'}, {label: 'EN', name: 'enTimelineTitle', widget: 'string'}]}
           - {label: "Timeline Events", name: "timelineEvents", widget: list, fields: [{ label: Year, name: year, widget: string }, { label: Title, name: title, widget: string }, { label: Description, name: description, widget: string }]}
+          - {label "Publications", name: "publications", widget: string}
+          - {label "CV", name: "cv", widget: file, default: "/uploads/cv.pdf", media_library: { config: { multiple: false }}}
       - file: "src/pages/work/index.md"
         label: "Work"
         name: "work"
