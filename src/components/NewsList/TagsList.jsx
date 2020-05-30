@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql, StaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
 import Icon from '../Icon';
 import { shortArrow } from '../../constants/svg';
 import './style.scss';
 
-const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => (
+const TagsList = ({ data: { allMarkdownRemark: { edges : posts }},  locale = 'el' }) => (
   <div className="post-list">
     {posts &&
     posts.map(({ node: post }) => (
@@ -30,7 +30,7 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
               </Link>
               <span className="post__date body">
                 <Icon {...shortArrow} />
-                  {post.frontmatter.date}
+                {post.frontmatter.date}
                 </span>
             </header>
             <p className="post__excerpt body">
@@ -58,22 +58,8 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
                   </div>
                 </Link>
               </div>
-              {(post.frontmatter.tags && post.frontmatter.tags.length > 0) && (
-                <div className="post__tags">
-                  <span className="heading h4">Tags:</span>{` `}
-                  <ul className="list list--horizontal">
-                    {post.frontmatter.tags.map(({ tag, title }) => (
-                      <li key={tag} className="body">
-                        <Link to={`${locale === 'en' ? '/en': ''}/tags/${tag.toLowerCase()}`}>
-                          {title[locale]}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-
-                </div>
-              )}
             </div>
+
           </div>
         </article>
       </div>
@@ -81,7 +67,7 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
   </div>
 );
 
-NewsList.propTypes = {
+TagsList.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
@@ -89,45 +75,4 @@ NewsList.propTypes = {
   }),
 };
 
-export default ({ locale }) => (
-  <StaticQuery
-    query={graphql`
-      query BlogRollQuery {
-        allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
-        ) {
-          edges {
-            node {
-              excerpt(pruneLength: 280)
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags {
-                    tag
-                    title {
-                        el
-                        en
-                    }
-                }
-                templateKey
-                date(formatString: "MMM DD, YYYY")
-                featuredimage {
-                  childImageSharp {
-                    fluid(maxWidth: 280, quality: 50) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `}
-    render={(data) => <NewsList data={data} locale={locale} />}
-  />
-)
+export default TagsList;

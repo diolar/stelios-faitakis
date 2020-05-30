@@ -9,6 +9,8 @@ import Pagination from '../components/Pagination';
 import Ni from '../components/lettersSvg/Ni';
 import Icon from '../components/Icon';
 import { shortArrow } from '../constants/svg';
+import {transitionProps} from '../constants/settings';
+import Link from 'gatsby-plugin-transition-link';
 
 export const BlogPostTemplate = ({
   content,
@@ -57,9 +59,11 @@ export const BlogPostTemplate = ({
 
           <div className="post-page__pagination">
             <Pagination next={next} prev={prev}>
-              <div className="icon">
-                <Ni/>
-              </div>
+              <Link to={locale === 'el' ? '/news' : '/en/news'} {...transitionProps}>
+                <div className="icon">
+                  <Ni/>
+                </div>
+              </Link>
             </Pagination>
           </div>
         </div>

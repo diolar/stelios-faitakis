@@ -779,6 +779,21 @@ body.portal-open {
   }
 }
 
+.icon-list {
+  text-align: center;
+  width: calc(100% + 2rem);
+  margin: 1rem -1rem 0;
+
+  @media screen and (min-width: #{$min-width-lg}) {
+    display: flex;
+  }
+
+  > * {
+    padding: 1rem;
+    display: inline-block;
+  }
+}
+
 .post-page {
   width: 35rem;
   max-width: 100%;

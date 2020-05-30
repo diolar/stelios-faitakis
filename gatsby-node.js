@@ -36,6 +36,13 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               templateKey
+              tags {
+                tag
+                title {
+                  el
+                  en
+                }
+              }
               title
               titleEN
               description
@@ -83,6 +90,36 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     const posts = result.data.allMarkdownRemark.edges;
+    let tags = [];
+
+    // Create Tags pages
+    posts.forEach(({ node: { id, frontmatter: fm } }, index) => {
+      if (fm.templateKey != null) {
+        Object.keys(locales).map(lang => {
+          if (_.get(fm, `tags`)) {
+            tags = tags.concat(fm.tags)
+          }
+
+          // Make tag pages
+          tags.forEach(({ tag, title }) => {
+            const tagPath = `/tags/${_.kebabCase(tag)}/`;
+            const localizedPath = locales[lang].default ? tagPath : locales[lang].path + tagPath;
+
+            createPage({
+              id,
+              path: localizedPath,
+              component: path.resolve(`src/templates/tags-page.js`),
+              context: {
+                tag: tag,
+                title: title[lang],
+                locale: lang,
+                pathname: tagPath,
+              },
+            })
+          })
+        })
+      }
+    });
 
     posts.forEach(({ node: { id, frontmatter: fm, fields} }, index) => {
       if (fm.templateKey != null) {

@@ -61,7 +61,7 @@
   }
 
   &__more {
-    display: inline-block;
+    margin-right: 1.25em;
 
     .label {
       display: flex;
@@ -81,6 +81,30 @@
 
     .eye {
       fill: currentColor;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  &__tags {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+
+    .list {
+      text-transform: capitalize;
+
+      > * {
+        margin: 0;
+      }
+    }
+
+    .list.list--horizontal > * + *:before {
+      content: ', ';
     }
   }
 }
