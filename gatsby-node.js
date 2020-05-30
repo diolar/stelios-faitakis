@@ -100,6 +100,7 @@ exports.createPages = ({ actions, graphql }) => {
             tags = tags.concat(fm.tags)
           }
 
+          tags = _.uniqBy(tags, 'tag');
           // Make tag pages
           tags.forEach(({ tag, title }) => {
             const tagPath = `/tags/${_.kebabCase(tag)}/`;
@@ -148,6 +149,18 @@ exports.createPages = ({ actions, graphql }) => {
             localizedContext = {
               ...localizedContext,
               ...{ content: fm['terms'][`${[lang]}Terms`].childMarkdownRemark.html}
+            };
+          }
+
+          if (fm.templateKey === 'news-page') {
+            const localizedTags = tags.map(({ tag, title }) => ({
+              tag,
+              title: title[lang]
+            }));
+
+            localizedContext = {
+              ...localizedContext,
+              tags: localizedTags,
             };
           }
 
