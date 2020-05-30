@@ -16,6 +16,7 @@ export const WorkItemTemplate = ({
   description,
   title,
   image,
+  images,
   helmet,
   prev,
   next,
@@ -86,6 +87,39 @@ export const WorkItemTemplate = ({
 
         </div>
       </div>
+
+      {(images && images.length > 0) && (
+        <div className="page__grid grid grid--work-item fade">
+          <div className="work-item__collection">
+            {images.map(({ image, alt }, index) => (
+              <Modal
+                key={index}
+                trigger={
+                  <PreviewCompatibleImage
+                    imageInfo={{
+                      image: image,
+                      alt: alt || `image for post ${title}`,
+                      imgStyle: {
+                        objectFit: 'contain',
+                      },
+                    }}
+                  />
+                }>
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: image,
+                    alt: alt || `image for work ${title}`,
+                    style: { height: '100%' },
+                    imgStyle: {
+                      objectFit: 'contain',
+                    },
+                  }}
+                />
+              </Modal>
+            ))}
+          </div>
+        </div>
+      )}
     </Page>
 
   )
@@ -118,6 +152,7 @@ const WorkItem = ({ data, pageContext: { prev, next, title, locale } }) => {
       }
       title={title}
       image={post.frontmatter.image}
+      images={post.frontmatter.images}
       prev={prev}
       next={next}
       locale={locale}
@@ -150,6 +185,15 @@ export const pageQuery = graphql`
                 ...GatsbyImageSharpFluid
             }
           }
+        }
+        images {
+            image {
+                childImageSharp {
+                    fluid(maxWidth: 800, quality: 50) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
         }
       }
     }

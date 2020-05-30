@@ -63,8 +63,10 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
                   <span className="heading h4">Tags:</span>{` `}
                   <ul className="list list--horizontal">
                     {post.frontmatter.tags.map(({ tag, title }) => (
-                      <li key={tag} className="body">
-                        <Link to={`${locale === 'en' ? '/en': ''}/tags/${tag.toLowerCase()}`}>
+                      <li key={tag}>
+                        <Link
+                          to={`${locale === 'en' ? '/en': ''}/tags/${tag.toLowerCase()}`}
+                          className="tag">
                           {title[locale]}
                         </Link>
                       </li>

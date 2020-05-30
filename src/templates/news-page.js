@@ -6,10 +6,11 @@ import PageLetter from '../components/PageLetter';
 import Page from '../components/Page';
 import {pattern3, pattern4} from '../constants/patterns';
 import Ni from '../components/lettersSvg/Ni';
+import {Link} from 'gatsby';
 
 const NewsPageTemplate = ({
   title,
-  description,
+  tags,
   locale,
   helmet,
   }) => {
@@ -29,7 +30,22 @@ const NewsPageTemplate = ({
 
         <div className="order-2 fade">
           <h1 className="h1 heading heading--gutters">{title}</h1>
-          <p className="body">{description}</p>
+          {(tags && tags.length > 0) && (
+            <div className="post__tags">
+              <span className="heading h4">Tags:</span>{` `}
+              <ul className="list list--horizontal">
+                {tags.map(({ tag, title }) => (
+                  <li key={tag}>
+                    <Link
+                      to={`${locale === 'en' ? '/en': ''}/tags/${tag.toLowerCase()}`}
+                      className="tag">
+                      {title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
 
@@ -45,12 +61,13 @@ NewsPageTemplate.propTypes = {
   description: PropTypes.string,
 };
 
-const MewsPage = ({  pageContext: { title, description, locale } }) => {
+const MewsPage = ({  pageContext: { title, description, tags, locale } }) => {
   return (
     <NewsPageTemplate
       title={title}
       description={description}
       locale={locale}
+      tags={tags}
       helmet={
         <Helmet>
           <title>{title}</title>

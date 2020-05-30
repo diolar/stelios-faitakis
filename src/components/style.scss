@@ -157,7 +157,7 @@ body.portal-open {
 
 .heading {
   font-family: 'FaitakisDisplay', Helvetica, serif;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.15em;
   line-height: 1.2;
   text-transform: uppercase;
 
@@ -173,7 +173,7 @@ body.portal-open {
 }
 
 .h1 {
-  font-size: 2.625rem;
+  font-size: 2.2rem;
 
 }
 
@@ -296,9 +296,9 @@ body.portal-open {
     text-align: center;
     text-transform: uppercase;
     font-family: inherit;
-    letter-spacing: 1.5em;
+    letter-spacing: 1em;
     line-height: 1.4;
-    margin-right: -1.5em;
+    margin-right: -1em;
     padding-left: 2rem;
     margin-top: 0;
     margin-bottom: 0;
@@ -306,8 +306,6 @@ body.portal-open {
     @media screen and (max-width: #{$max-width-sm}) {
       padding-left: 0;
       font-size: 16px;
-      letter-spacing: 1em;
-      margin-right: -1em;
     }
   }
 
@@ -842,24 +840,20 @@ body.portal-open {
 .work-item {
   text-align: center;
 
-  @media screen and (min-width: #{$max-width-sm}) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    > * {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-
   &__img {
     > div {
-      padding-bottom: 100% !important;
+      //padding-bottom: 100% !important;
     }
   }
 
   &__meta {
+    > * + * {
+      margin-top: 1rem;
+    }
+  }
+
+  &__collection {
+    margin-top: 1rem;
     > * + * {
       margin-top: 1rem;
     }
@@ -1088,7 +1082,7 @@ button {
 
   &__inner {
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
     height: 100%;
     width: 100%;
