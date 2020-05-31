@@ -4,7 +4,7 @@ import { Link, graphql, StaticQuery } from 'gatsby';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
 import Icon from '../Icon';
-import { iconMural, iconPainting, iconPaper, iconDivider, iconEye } from '../../constants/svg';
+import { iconMural, iconPainting, iconPaper, iconDivider } from '../../constants/svg';
 import './style.scss';
 
 const tabValues = {
@@ -103,22 +103,14 @@ const WorkList = ({ data, locale }) => {
                     </div>
                   </div>
                   <div className="case__middle">
-                    <div className="case__thumb">
+                    <Link to={`${prefix}${fields.slug}`} className="case__thumb eye-cursor">
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: fm.image,
                           alt: prefix ? fm.titleEN : fm.title,
                         }}
                       />
-                      <Link to={`${prefix}${fields.slug}`} className="case__meta">
-                        <div className="case__icon">
-                          <Icon {...iconEye} />
-                        </div>
-                        <h2 className="heading heading--center h3">
-                          {prefix ? fm.titleEN : fm.title}
-                        </h2>
-                      </Link>
-                    </div>
+                    </Link>
                   </div>
                   <div>
                     {fm.quote && fm.quote}

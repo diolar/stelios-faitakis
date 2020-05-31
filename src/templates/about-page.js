@@ -12,7 +12,7 @@ import { pattern2, pattern3 } from '../constants/patterns';
 import Icon from '../components/Icon';
 import { iconPaper } from '../constants/svg'
 
-export const AboutPageTemplate = ({ title, body, image, timeline, helmet, locale }) => {
+export const AboutPageTemplate = ({ title, body, image, timeline, helmet, publications, cv,  locale }) => {
   return (
     <Page locale={locale}>
       {helmet}
@@ -54,20 +54,32 @@ export const AboutPageTemplate = ({ title, body, image, timeline, helmet, locale
             <p className="body" style={{ marginTop: '2em' }}>{body.paragraph2}</p>
             <p className="body">{body.paragraph3}</p>
 
-            <div className="icon-list">
-              <a href="/uploads/cv.pdf" target="_blank" rel="noopener noreferrer">
-              <span className="h1">
-                <Icon {...iconPaper} />
-              </span>
-                <div className="h4 heading heading--gutters heading--center">Πλήρες Βιογραφικό</div>
-              </a>
-              <Link to="/tags/publications">
-              <span className="h1">
-                <Icon {...iconPaper} />
-              </span>
-                <div className="h4 heading heading--gutters heading--center">Δημοσιεύσεις</div>
-              </Link>
-            </div>
+            {(publications || cv) && (
+              <div className="icon-list">
+                {cv && (
+                  <a href={cv} target="_blank" rel="noopener noreferrer">
+                  <span className="h1">
+                    <Icon {...iconPaper} />
+                  </span>
+                    <div className="h4 heading heading--gutters heading--center">
+                      {locale === 'en' ? 'Curriculum Vitae' :  'Πλήρες Βιογραφικό'}
+                    </div>
+                  </a>
+                )}
+
+                {publications && (
+                  <Link to={`/tags/${publications}`}>
+                  <span className="h1">
+                    <Icon {...iconPaper} />
+                  </span>
+                    <div className="h4 heading heading--gutters heading--center">
+                      {locale === 'en' ? 'Publications' :  'Δημοσιεύσεις'}
+                    </div>
+                  </Link>
+                )}
+
+              </div>
+            )}
 
             <h2 className="h1 heading heading--gutters heading--center">
               {timeline.title}
@@ -105,6 +117,8 @@ const AboutPage = ({ data, pageContext: { title, description, content, timelineT
         title: timelineTitle,
         events: post.frontmatter.timelineEvents.sort((a, b) => a.year > b.year ? 1 : -1),
       }}
+      publications={post.frontmatter.publications}
+      cv={post.frontmatter.cv}
       locale={locale}
       helmet={
         <Helmet>
@@ -142,6 +156,8 @@ export const pageQuery = graphql`
                     title
                     description
                 }
+                publications
+                cv
             }
         }
     }

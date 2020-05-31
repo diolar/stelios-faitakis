@@ -18,7 +18,7 @@ const Modal = ({ children, trigger }) => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)} className="button-reset modal__open">
+      <button onClick={() => setOpen(true)} className="button-reset modal__open eye-cursor">
         {trigger}
       </button>
       <ReactModal
