@@ -10,6 +10,8 @@ description: |-
   114 x 91 
 descriptionEN: |
   Mixed media on wood
-  114 x 91 
-bodyEN: ""
+  114 x 91
+quote:
+  content: Lorem ipsum dolor sit amet'
+  cite: Lorem Ispum
 ---

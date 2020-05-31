@@ -4,7 +4,7 @@ import { Link, graphql, StaticQuery } from 'gatsby';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
 import Icon from '../Icon';
-import { iconMural, iconPainting, iconPaper, iconDivider } from '../../constants/svg';
+import {iconMural, iconPainting, iconPaper, iconDivider, iconQuote} from '../../constants/svg';
 import './style.scss';
 
 const tabValues = {
@@ -112,8 +112,20 @@ const WorkList = ({ data, locale }) => {
                       />
                     </Link>
                   </div>
-                  <div>
-                    {fm.quote && fm.quote}
+                  <div className="hidden-sm">
+                    {fm.quote && (
+                      <figure className="case__quote">
+                        <blockquote>
+                          {fm.quote.content}
+                        </blockquote>
+                        {fm.quote.cite && (
+                          <div className="cite">
+                            <Icon {...iconQuote} />
+                            <figcaption>{fm.quote.cite}</figcaption>
+                          </div>
+                        )}
+                      </figure>
+                    )}
                   </div>
                 </article>
               </div>
@@ -150,13 +162,15 @@ export default ({ locale }) => (
                     slug
                 }
                 frontmatter {
-                  title
-                  titleEN
+                  quote {
+                    content
+                    cite
+                  }
                   date(formatString: "YYYY")
                   image {
                     childImageSharp {
-                      fluid(maxWidth: 834, quality: 50) {
-                        ...GatsbyImageSharpFluid
+                      fluid(maxWidth: 700, quality: 50) {
+                        ...GatsbyImageSharpFluid_withWebp
                       }
                     }
                   }

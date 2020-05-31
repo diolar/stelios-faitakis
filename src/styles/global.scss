@@ -697,7 +697,7 @@ body.portal-open {
     grid-template-columns: 5.2% 82.825% 5.2%;
 
     @media screen and (min-width: #{$min-width-md}) {
-      grid-template-columns: 17.175% 50% 32.825%;
+      grid-template-columns: 17.175% 50% auto;
     }
   }
 
