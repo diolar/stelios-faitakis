@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import CookieConsent from 'react-cookie-consent';
 import Header from './Header';
-import './style.scss';
+import '../styles/global.scss';
 import useSiteMetadata from './SiteMetadata';
 import BackToTop from '../components/BackToTop';
 
