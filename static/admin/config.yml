@@ -10,13 +10,6 @@ backend:
 
 media_folder: static/img
 public_folder: /img
-media_library:
-  name: uploadcare
-  config:
-    publicKey: 91f23e1db646b00209c4
-  settings:
-    autoFilename: true
-    defaultOperations: '/resize/800x/'
 
 collections:
   - name: "news"
