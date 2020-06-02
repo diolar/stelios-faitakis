@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {graphql, Link} from 'gatsby';
+import {graphql} from 'gatsby';
 import PageLetter from '../components/PageLetter';
 import Page from '../components/Page';
 import {pattern4, pattern5} from '../constants/patterns';
@@ -13,7 +13,6 @@ const ContactPageTemplate = ({
   facebook,
   locale,
 }) => {
-  const prefix = locale === 'el' ? '' : '/en';
   return (
     <Page locale={locale}>
       <div className="page__grid grid grid--contact">
@@ -42,9 +41,6 @@ const ContactPageTemplate = ({
             {facebook &&
             <li>fb: @{facebook}</li>
             }
-            <li>
-              <Link to={`${prefix}/terms-of-sale`}>{prefix ? 'Terms of Sale' : 'Όροι Πώλησης'}</Link>
-            </li>
           </ul>
         </div>
       </div>
@@ -82,7 +78,6 @@ export const pageQuery = graphql`
     query ContactPageTemplate {
         markdownRemark(frontmatter: { templateKey: { eq: "contact-page" } }) {
             frontmatter {
-                title
                 email
                 instagram
                 facebook

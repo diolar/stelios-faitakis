@@ -1,29 +1,5 @@
-$gray: #757575;
-$light-gray: #B4B4B4;
-$dark: #141414;
-
-$credits-height: 48px;
-
-$min-width: 320px;
-$max-width: 1700px;
-
-$base-font: 16px;
-$max-font: 32px;
-
-$max-width-sm: 768px;
-
-$min-width-md: 769px;
-$max-width-md: 991px;
-
-$min-width-lg: 992px;
-
-@function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
-  }
-
-  @return $number;
-}
+@import './variables.scss';
+@import './mixins';
 
 html, body, div, span, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -246,13 +222,15 @@ body.portal-open {
 
 .credits {
   position: absolute;
+  z-index: 1;
   left: 0;
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: $credits-height;
+  min-height: $credits-height;
+  padding: 1rem;
 
   font-size: 12px;
   letter-spacing: 0.15em;
@@ -622,10 +600,10 @@ body.portal-open {
   text-align: center;
   padding-top: 16px;
   padding-bottom: 16px;
-  @extend .container;
 
   > * {
     display: inline-block;
+    @extend .container;
   }
 
   &__content {
@@ -636,6 +614,7 @@ body.portal-open {
 
   &__button {
     @extend .button-reset;
+    margin-top: 0.5em;
     border: 1px solid currentColor;
     font-size: 16px;
     color: $dark;
@@ -858,8 +837,39 @@ body.portal-open {
 
   &__collection {
     margin-top: 1rem;
+
     > * + * {
       margin-top: 1rem;
+    }
+
+    @media screen and (max-width: #{$max-width-md}) {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      width: calc(100% + 9rem);
+      margin-left: -4.5rem;
+      margin-right: -4.5rem;
+
+      > * {
+        flex: 1 0 25%;
+        max-width: 25%;
+        margin-top: 0;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    @media screen  and (max-width: #{$max-width-sm}) {
+      width: calc(100% + 5rem);
+      margin-left: -2.5rem;
+      margin-right: -2.5rem;
+    }
+
+    @media screen  and (max-width: 500px) {
+      width: calc(100% + 3rem);
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
     }
   }
 
@@ -1073,52 +1083,5 @@ button {
 
   &--responsive {
     @extend .absolute-fill;
-  }
-}
-
-.observable {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 1px;
-  overflow: hidden;
-
-  &__inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-.back-to-top {
-  position: fixed;
-  right: 1rem;
-  bottom: 2rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 300ms ease;
-
-  &--visible {
-    opacity: 1;
-    visibility: visible;
-    z-index: 1;
-  }
-
-  button {
-    @extend .button-reset;
-  }
-
-  .svgIcon {
-    width: 64px;
-
-    text {
-      @extend .display-font;
-      fill: currentColor;
-      stroke: none;
-      letter-spacing: 0.05em;
-    }
   }
 }
