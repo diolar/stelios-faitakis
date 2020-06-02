@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import { uniq } from 'lodash';
 import { Link, graphql, StaticQuery } from 'gatsby';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
 import Icon from '../Icon';
-import {iconMural, iconPainting, iconPaper, iconDivider, iconQuote} from '../../constants/svg';
+import {iconMural, iconPainting, iconPaper, iconDivider, iconQuote, selectArrow} from '../../constants/svg';
 import './style.scss';
 
 const tabValues = {
@@ -28,6 +29,7 @@ const tabValues = {
 const WorkList = ({ data, locale }) => {
   const { group: types } = data.allMarkdownRemark;
   const [selectedTab, setSelectedTab] = useState('painting');
+  const [year, setYear] = useState('all');
   const tabs = [];
   const tabPanels = [];
   types.forEach(({ fieldValue, edges }) => {
@@ -42,8 +44,22 @@ const WorkList = ({ data, locale }) => {
   }, []);
 
   const onSelectTab = (tabIndex) => {
+    setYear('all');
     setSelectedTab(tabs[tabIndex]);
     window.history.pushState("", "", `/work?view=${tabs[tabIndex]}`);
+  };
+
+  const getSelectOptions = years => {
+    const options = uniq(years.reduce((acc, cur) => [...acc, cur.node.frontmatter.date ], []));
+    return (
+      options.map(year => (
+        <option key="year" value={year}>{year}</option>
+      ))
+    );
+  };
+
+  const onYearSelect = event => {
+    setYear(event.target.value);
   };
 
   const selectedTabIndex = tabs.indexOf(selectedTab);
@@ -71,11 +87,29 @@ const WorkList = ({ data, locale }) => {
 
       {tabPanels && tabPanels.map((cases, index) => (
         <TabPanel key={index} className="tabPanel">
+          <div className="year-select">
+            <div className={`select-wrapper ${year !== 'all' ? 'select-wrapper--selected' : ''}`}>
+              <select className="h4 heading" onChange={onYearSelect}>
+                <option value='all'>...</option>
+                {getSelectOptions(cases)}
+              </select>
+              <span className="select-icon">
+                <Icon {...selectArrow} />
+              </span>
+              <span className="h2 heading">{locale === 'en' ? 'Year' : 'Χρονολογία'}</span>
+            </div>
+          </div>
           {cases && cases.map(({ node: { id, fields, frontmatter: fm } }, index) => {
             const isFirst = index === 0;
             // We want to hide the identical years
             const isSameYear = !isFirst && fm.date === cases[index-1].node.frontmatter.date;
             const addDivider = !isSameYear && !isFirst;
+            const filterYear = year !== 'all' && year !== fm.date;
+
+            if (filterYear) {
+              return false;
+            }
+
             return (
               <div key={id} className="case">
                 {addDivider && (
@@ -85,7 +119,7 @@ const WorkList = ({ data, locale }) => {
                     </div>
                   </div>
                 )}
-                <article className="grid grid--work-list">
+                <article className="grid grid--work-list" id={!isSameYear ? fm.date : ''} >
                   <div className="case__left">
                     <div className={isSameYear ? 'visually-hidden' : ''}>
                       <div className="case__year">

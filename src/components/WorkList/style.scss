@@ -91,7 +91,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   max-width: 1280px;
-  margin: 2rem auto 3.5rem;
+  margin: 2rem auto 1rem;
   padding-left: 0;
   list-style: none;
 }
@@ -145,5 +145,94 @@
 .tabPanel {
   > * + * {
     margin-top: 2rem;
+  }
+}
+
+.year-select {
+  display: flex;
+  justify-content: center;
+
+  .heading {
+    opacity: 0.33;
+
+    @media screen and (max-width: 500px) {
+      font-size: 1rem;
+    }
+  }
+
+  .select-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+
+    &--selected {
+      .select-icon {
+        opacity: 1;
+      }
+
+      .heading {
+        opacity: 1;
+      }
+    }
+  }
+
+  .select-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding-right: 0.25rem;
+    opacity: 0.33;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    transition: inherit;
+
+    .svgIcon {
+      font-size: 0.5rem;
+      fill: currentColor;
+      stroke: none;
+    }
+  }
+
+  select {
+    margin-left: 0.5rem;
+    position: relative;
+    padding: 0.2rem 1rem 0.2rem 0.25rem;
+    color : currentColor;
+    border: 2px solid currentColor;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    line-height: 1;
+    -webkit-appearance: none;
+    transition: inherit;
+
+    option {
+      color: black;
+    }
+
+    &:hover {
+      opacity: 0.66;
+
+      & ~ .select-icon {
+        opacity: 0.66;
+      }
+    }
+
+    &:focus {
+      opacity: 1;
+
+      & ~ .select-icon {
+        opacity: 1;
+      }
+
+      & ~ .heading {
+        opacity: 1;
+      }
+    }
   }
 }

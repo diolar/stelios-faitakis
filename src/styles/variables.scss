@@ -1,0 +1,26 @@
+$gray: #757575;
+$light-gray: #B4B4B4;
+$dark: #141414;
+
+$credits-height: 48px;
+
+$min-width: 320px;
+$max-width: 1700px;
+
+$base-font: 16px;
+$max-font: 32px;
+
+$max-width-sm: 768px;
+
+$min-width-md: 769px;
+$max-width-md: 991px;
+
+$min-width-lg: 992px;
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}

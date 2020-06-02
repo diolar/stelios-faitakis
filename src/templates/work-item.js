@@ -54,6 +54,37 @@ export const WorkItemTemplate = ({
               }}
             />
           </Modal>
+
+          {(images && images.length > 0) && (
+            <div className="work-item__collection">
+              {images.map(({ image, alt }, index) => (
+                <Modal
+                  key={index}
+                  trigger={
+                    <PreviewCompatibleImage
+                      imageInfo={{
+                        image: image,
+                        alt: alt || `image for post ${title}`,
+                        imgStyle: {
+                          objectFit: 'contain',
+                        },
+                      }}
+                    />
+                  }>
+                  <PreviewCompatibleImage
+                    imageInfo={{
+                      image: image,
+                      alt: alt || `image for work ${title}`,
+                      style: { height: '100%' },
+                      imgStyle: {
+                        objectFit: 'contain',
+                      },
+                    }}
+                  />
+                </Modal>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="work-item">
@@ -87,39 +118,6 @@ export const WorkItemTemplate = ({
 
         </div>
       </div>
-
-      {(images && images.length > 0) && (
-        <div className="page__grid grid grid--work-item fade">
-          <div className="work-item__collection">
-            {images.map(({ image, alt }, index) => (
-              <Modal
-                key={index}
-                trigger={
-                  <PreviewCompatibleImage
-                    imageInfo={{
-                      image: image,
-                      alt: alt || `image for post ${title}`,
-                      imgStyle: {
-                        objectFit: 'contain',
-                      },
-                    }}
-                  />
-                }>
-                <PreviewCompatibleImage
-                  imageInfo={{
-                    image: image,
-                    alt: alt || `image for work ${title}`,
-                    style: { height: '100%' },
-                    imgStyle: {
-                      objectFit: 'contain',
-                    },
-                  }}
-                />
-              </Modal>
-            ))}
-          </div>
-        </div>
-      )}
     </Page>
 
   )

@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Icon from '../Icon';
+import './style.scss';
 
 const BackToTop = () => {
   const [show, setShow] = useState(false);
