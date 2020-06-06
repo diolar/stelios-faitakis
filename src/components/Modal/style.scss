@@ -27,6 +27,16 @@
 }
 
 .modal {
+  height: 100%;
+
+  &__wrapper {
+    height: 100%;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+  }
 
   &__content {
     position: absolute;
@@ -34,9 +44,6 @@
     bottom: 1.4rem;
     left: 0;
     width: 100%;
-
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
   }
 
   &__open {

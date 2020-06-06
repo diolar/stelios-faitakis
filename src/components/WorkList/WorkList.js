@@ -53,7 +53,7 @@ const WorkList = ({ data, locale }) => {
     const options = uniq(years.reduce((acc, cur) => [...acc, cur.node.frontmatter.date ], []));
     return (
       options.map(year => (
-        <option key="year" value={year}>{year}</option>
+        <option key={year} value={year}>{year}</option>
       ))
     );
   };
