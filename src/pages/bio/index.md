@@ -1,9 +1,9 @@
 ---
-titleEN: bio
-descriptionEN: Born in 1976, Stelios Faitakis lives and works in Athens.
 templateKey: about-page
-title: bioc
+title: Βίος
+titleEN: Bio
 description: Γεννήθηκε το 1976, ο Στέλιος Φαϊτάκης ζει και εργάζεται στην Αθήνα.
+descriptionEN: Born in 1976, Stelios Faitakis lives and works in Athens.
 bio:
   paragraph1:
     el: Γεννήθηκε το 1976, ο Στέλιος Φαϊτάκης ζει και εργάζεται στην Αθήνα. Πριν
@@ -58,6 +58,6 @@ timelineEvents:
   - year: "1995"
     title: Event 1995
     description: Description for event
-cv: /uploads/cv.pdf
 publications: publications
+cv: /uploads/cv.pdf
 ---
