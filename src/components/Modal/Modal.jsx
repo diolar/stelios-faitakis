@@ -29,16 +29,17 @@ const Modal = ({ children, trigger }) => {
         overlayClassName="modal-overlay"
         bodyOpenClassName="body--modal-open"
       >
-        <div className="modal__content">
-          {children}
-        </div>
+        <div className="modal__wrapper">
+          <div className="modal__content">
+            {children}
+          </div>
 
-        <div className="modal__close">
-          <button onClick={() => setOpen(false)} className="icon-button button-reset">
-            <EyeIcon />
-          </button>
+          <div className="modal__close">
+            <button onClick={() => setOpen(false)} className="icon-button button-reset">
+              <EyeIcon />
+            </button>
+          </div>
         </div>
-
       </ReactModal>
     </>
   )
