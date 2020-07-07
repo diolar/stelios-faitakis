@@ -23,8 +23,8 @@ images:
   - image: /img/steliosfaitakis_socratesdrinkstheconium_2007_.11.jpg
 description: |-
   Αθήνα 2007
-   Συμμετοχή στην 1η Μπιενάλε της Αθήνας, Τεχνόπολη
+  Συμμετοχή στην 1η Μπιενάλε της Αθήνας, Τεχνόπολη
 descriptionEN: |-
   Athens 2007
-   Participation in the 1st Biennial of Athens, Technopolis
+  Participation in the 1st Biennial of Athens, Technopolis
 ---
