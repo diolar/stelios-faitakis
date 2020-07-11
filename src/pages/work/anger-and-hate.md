@@ -2,7 +2,7 @@
 templateKey: work-item
 title: Θυμός και Μίσος
 titleEN: Anger and Hate
-date: 2020-07-11T11:59:54.290Z
+date: 2017-07-07T11:59:00.000Z
 type: painting
 image: /img/ore_3389-edit.jpg
 description: |-
