@@ -2,9 +2,9 @@
 templateKey: work-item
 title: Ο Σωκράτης πίνει το κώνιο
 titleEN: Socrates drinks the conium
-date: 2007-02-12T23:45:39.762Z
+date: 2007-02-13T23:45:39.762Z
 type: mural
-image: /img/stelios_faitakis_socrates-drinks-the-conium_2007_.5.jpg
+image: /img/steliosfaitakis_socratesdrinkstheconium_2007_.jpg
 images:
   - image: /img/stelios_faitakis_socrates-drinks-the-conium_2007_.5.jpg
   - image: /img/stelios_faitakis_socratesdrinkstheconium_2007_.3.jpg
