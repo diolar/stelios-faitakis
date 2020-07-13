@@ -5,7 +5,7 @@ import { Link, graphql, StaticQuery } from 'gatsby';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
 import Icon from '../Icon';
-import {iconMural, iconPainting, iconPaper, iconDivider, iconQuote, selectArrow} from '../../constants/svg';
+import { iconMural, iconPainting, iconPaper, iconDivider, iconQuote, selectArrow } from '../../constants/svg';
 import './style.scss';
 
 const tabValues = {

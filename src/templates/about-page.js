@@ -10,7 +10,7 @@ import PageLetter from '../components/PageLetter';
 import Beta from '../components/lettersSvg/Beta';
 import { pattern2, pattern3 } from '../constants/patterns';
 import Icon from '../components/Icon';
-import { iconPaper } from '../constants/svg'
+import { iconPublications, iconCV } from '../constants/svg'
 
 export const AboutPageTemplate = ({ title, body, image, timeline, helmet, publications, cv,  locale }) => {
   return (
@@ -57,22 +57,18 @@ export const AboutPageTemplate = ({ title, body, image, timeline, helmet, public
             {(publications || cv) && (
               <div className="icon-list">
                 {cv && (
-                  <a href={cv} target="_blank" rel="noopener noreferrer">
-                  <span className="h1">
-                    <Icon {...iconPaper} />
-                  </span>
-                    <div className="h4 heading heading--gutters heading--center">
+                  <a className="h3" href={cv} target="_blank" rel="noopener noreferrer">
+                    <Icon {...iconCV} />
+                    <div className="heading heading--gutters heading--center">
                       {locale === 'en' ? 'Curriculum Vitae' :  'Πλήρες Βιογραφικό'}
                     </div>
                   </a>
                 )}
 
                 {publications && (
-                  <Link to={`/tags/${publications}`}>
-                  <span className="h1">
-                    <Icon {...iconPaper} />
-                  </span>
-                    <div className="h4 heading heading--gutters heading--center">
+                  <Link className="h3" to={`/tags/${publications}`}>
+                    <Icon {...iconPublications} />
+                    <div className="heading heading--gutters heading--center">
                       {locale === 'en' ? 'Publications' :  'Δημοσιεύσεις'}
                     </div>
                   </Link>
