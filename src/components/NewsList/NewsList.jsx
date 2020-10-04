@@ -12,8 +12,8 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
     posts.map(({ node: post }) => (
       <div key={post.id}>
         <article className="post">
-          {post.frontmatter.featuredimage ? (
-            <div>
+          <div>
+            {post.frontmatter.featuredimage ? (
               <PreviewCompatibleImage
                 imageInfo={{
                   image: post.frontmatter.featuredimage,
@@ -21,8 +21,8 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
                   className: 'post__thumb'
                 }}
               />
-            </div>
-          ) : null}
+            ) : null}
+          </div>
           <div className="post__content">
             <header className="post__header">
               <Link to={post.fields.slug} className="post__title h2 heading">
