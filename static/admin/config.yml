@@ -78,7 +78,8 @@ collections:
           - {label: "Timeline Title", name: "timelineTitle", widget: "object", fields: [{label: 'EL', name: 'el', widget: 'string'}, {label: 'EN', name: 'en', widget: 'string'}]}
           - {label: "Timeline Events", name: "timelineEvents", widget: list, fields: [{ label: Year, name: year, widget: string }, { label: Title, name: title, widget: string }, { label: Description, name: description, widget: string }]}
           - {label "Publications", name: "publications", widget: string}
-          - {label "CV", name: "cv", widget: file, default: "/uploads/cv.pdf", media_library: { config: { multiple: false }}}
+          - {label "CV El", name: "cvEl", widget: file, default: "/img/cv_el.pdf", media_library: { config: { multiple: false }}}
+          - {label "CV En", name: "cvEn", widget: file, default: "/uploads/cv_en.pdf", media_library: { config: { multiple: false }}}
       - file: "src/pages/work/index.md"
         label: "Work"
         name: "work"

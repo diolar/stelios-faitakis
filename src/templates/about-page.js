@@ -57,7 +57,7 @@ export const AboutPageTemplate = ({ title, body, image, timeline, helmet, public
             {(publications || cv) && (
               <div className="icon-list">
                 {cv && (
-                  <a className="h3" href={cv} target="_blank" rel="noopener noreferrer">
+                  <a className="h3" href={`/img/${cv}`} target="_blank" rel="noopener noreferrer">
                     <Icon {...iconCV} />
                     <div className="heading heading--gutters heading--center">
                       {locale === 'en' ? 'Curriculum Vitae' :  'Πλήρες Βιογραφικό'}
@@ -104,6 +104,7 @@ AboutPageTemplate.propTypes = {
 
 const AboutPage = ({ data, pageContext: { title, description, content, timelineTitle, locale } }) => {
   const { markdownRemark: post } = data;
+  const cv = locale === 'en' ? post.frontmatter.cvEn.relativePath : post.frontmatter.cvEl.relativePath;
   return (
     <AboutPageTemplate
       title={title}
@@ -114,7 +115,7 @@ const AboutPage = ({ data, pageContext: { title, description, content, timelineT
         events: post.frontmatter.timelineEvents.sort((a, b) => a.year > b.year ? 1 : -1),
       }}
       publications={post.frontmatter.publications}
-      cv={post.frontmatter.cv}
+      cv={cv}
       locale={locale}
       helmet={
         <Helmet>
@@ -153,7 +154,12 @@ export const pageQuery = graphql`
                     description
                 }
                 publications
-                cv
+                cvEl {
+                    relativePath
+                }
+                cvEn {
+                    relativePath
+                }
             }
         }
     }
