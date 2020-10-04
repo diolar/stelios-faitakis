@@ -132,13 +132,13 @@ WorkItemTemplate.propTypes = {
   image: PropTypes.object,
 };
 
-const WorkItem = ({ data, pageContext: { prev, next, title, locale } }) => {
+const WorkItem = ({ data, pageContext: { prev, next, title, description, locale } }) => {
   const { markdownRemark: post } = data;
   return (
     <WorkItemTemplate
       content={post.html}
       contentComponent={HTMLContent}
-      description={post.frontmatter.description}
+      description={description}
       helmet={
         <Helmet>
           <title>{title}</title>
@@ -173,10 +173,6 @@ export const pageQuery = graphql`
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
-        title
-        titleEN
-        description
-        descriptionEN
         image {
           childImageSharp {
             fluid(maxWidth: 800, quality: 50) {
