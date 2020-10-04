@@ -68,5 +68,5 @@ timelineEvents:
     title: Event 1995
     description: Description for event
 publications: publications
-cv: /img/cv_en.pdf
+cv: /img/cv_el.pdf
 ---
