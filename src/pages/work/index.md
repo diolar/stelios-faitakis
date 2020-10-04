@@ -22,7 +22,23 @@ description: >-
 
 
   Η Δυτική σκέψη, τείνοντας όλο και περισσότερο προς μια μηχανιστική αντίληψη του κόσμου και του ίδιου του ανθρώπου, έχει συστηματικά απορρίψει έννοιες όπως «μαγεία» και «μυσταγωγία» υποβαθμίζοντας την σημασία τους. Η δουλειά μου είναι εδώ για να συνεισφέρει στο να επανέλθουν εκεί όπου αισθάνομαι πως τους αξίζει να βρίσκονται, ειδικά όταν εμπλέκεται η τέχνη: στην κορυφή των φιλοφρονήσεων.
-descriptionEN: Contrary to popular belief, Lorem Ipsum is not simply random
-  text. It has roots in a piece of classical Latin literature from 45 BC, making
-  it over 2000 years old.
+descriptionEN: >-
+  My name is Stelios Faitakis, I am a painter, I live and work in Athens.
+
+
+  Rooted in Byzantine art, I research, discover and use a variety of means of artistic creation that originate from different traditions, such as Mexican monumental painting, Tibetan and Japanese art, the Flemish School of painting and others. In addition, I combine cultural traditions with elements emerging from the meticulous observation of contemporary global culture. I respect my influences, while I am trying to maintain a purely personal character in my artworks, avoiding the reproduction of old craftsmen’s style.
+   
+  In my artworks I use all kinds of surfaces, in different dimensions, from miniature drawings on paper to murals, joining together traditional and modern materials and techniques.
+
+
+  Thematically, the essence of my work is the so-called "human condition", which arises from the perennial, unanswered questions of existence. Within this context, my work draws inspiration from religion and spirituality, philosophy, other forms of art, science, human relationships, history, etc. and engages all these elements in conversation with each other in order to create a complex narrative.
+
+
+  My anthropocentric paintings include surreal elements, filled with allegories and paradoxes, they use imagination freely, surpassing a strictly rational thinking. Irony, drama, metaphors and symbolic codes are additional components that work together creating a riddle, a juxtaposition of related images bonded together by enigmatic relationships, however always reaching a state of harmonious balance.
+
+
+  My intention is to offer the viewers an opportunity to escape from the strict rationalism prescribed by the age of high technology and the mechanization of human relationships, to encounter places that transcend time, to be able to ask (those) questions that expand perception and improve their relationship with the world around them.
+
+
+  Western thought as increasingly inclined to a mechanistic conception of the world and humankind, has systematically rejected notions such as "magic" and "mystagogy" downplaying their significance. My work aims to help reestablishing such concepts to where I feel they deserve to be, especially when art is involved: at the pinnacle of praise.
 ---
