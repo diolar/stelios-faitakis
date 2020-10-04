@@ -4,5 +4,5 @@ title: Eπαφή
 titleEN: Contact
 email: steliosfaitakis@gmail.com
 facebook: ""
-instagram: ""
+instagram: steliosfaitakis
 ---
