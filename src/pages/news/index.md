@@ -1,7 +1,13 @@
 ---
-templateKey: 'news-page'
-title: Νεα
+templateKey: news-page
+title: Το Βήμα | Πολιτισμός | Απόβαση τέχνης στη Λετονία με ελληνικό άρωμα.
 titleEN: News
-description: 'Φτιάξτε μία ωραία κούπα καφέ το πρωί'
-descriptionEN: 'Make a nice cup of coffee to start the day.'
+description: >-
+  Στη Ρίγα ο ήλιος μοιάζει να μη δύει ποτέ.
+
+  Αστραπέλλου Μαριλένα
+
+
+  https://www.tovima.gr/2018/06/08/culture/apobasi-texnis-sti-letonia-me-elliniko-arwma/
+descriptionEN: To Vima | by Marilena Astrapelou
 ---
