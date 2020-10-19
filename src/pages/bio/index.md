@@ -62,11 +62,14 @@ timelineEvents:
     title: Born in Athens
     description: Rooted from Crete
   - year: "2003"
-    title: Graduates from the School of Fine Arts
-    description: Description 1992
-  - year: "2003"
+    title: Honours Graduation
+    description: "School of Fine Arts "
+  - year: "2004"
     title: Athens
     description: 11th Biennale of Young European and Mediterranean Artists
+  - title: Anathena
+    description: Deste Foundation
+    year: "2006"
 publications: publications
 cvEl: /img/cv_el.pdf
 cvEn: /img/cv_en.pdf
