@@ -59,14 +59,14 @@ timelineTitle:
   en: Timeline
 timelineEvents:
   - year: "1976"
-    title: Title for 1976
-    description: Description 1976
-  - year: "1992"
-    title: Title for 1992
+    title: Born in Athens
+    description: Rooted from Crete
+  - year: "2003"
+    title: Graduates from the School of Fine Arts
     description: Description 1992
-  - year: "1995"
-    title: Event 1995
-    description: Description for event
+  - year: "2003"
+    title: Athens
+    description: 11th Biennale of Young European and Mediterranean Artists
 publications: publications
 cvEl: /img/cv_el.pdf
 cvEn: /img/cv_en.pdf
