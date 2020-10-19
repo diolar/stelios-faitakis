@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: Απόβαση τέχνης στη Λετονία με ελληνικό άρωμα
+title: Απόβαση τέχνης στη Λετονία με ελληνικό άρωμα.
 date: 2018-08-06T14:04:00.000Z
 tags:
   - tag: Publications
