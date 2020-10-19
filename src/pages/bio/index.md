@@ -70,6 +70,24 @@ timelineEvents:
   - title: Anathena
     description: Deste Foundation
     year: "2006"
+  - year: "2007"
+    title: 1st Athens Biennial
+    description: "Destroy Athens "
+  - year: "2009"
+    description: Wynwood Area Mural Project
+    title: Miami
+  - year: "2010"
+    description: Munich
+    title: Kunstsalon
+  - year: "2011"
+    title: 54th Venice Biennial
+    description: Speech Matters
+  - year: "2012"
+    title: Arsenale
+    description: 1st Kiev Biennial
+  - description: Hell As Pavillion
+    title: Palais de Tokyo
+    year: "2013"
 publications: publications
 cvEl: /img/cv_el.pdf
 cvEn: /img/cv_en.pdf
