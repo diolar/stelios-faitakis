@@ -9,5 +9,5 @@ description: >-
 
 
   https://www.tovima.gr/2018/06/08/culture/apobasi-texnis-sti-letonia-me-elliniko-arwma/
-descriptionEN: To Vima | by Marilena Astrapelou
+descriptionEN: To Vima | 2018 | by Marilena Astrapelou
 ---
