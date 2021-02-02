@@ -21,7 +21,7 @@ export const BlogPostTemplate = ({
   helmet,
   prev,
   next,
-  locale
+  locale,
 }) => {
   const PostContent = contentComponent || Content
 

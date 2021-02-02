@@ -43,6 +43,7 @@ exports.createPages = ({ actions, graphql }) => {
                   en
                 }
               }
+              locale
               title
               titleEN
               description
@@ -91,7 +92,6 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges;
     let tags = [];
-
     // Create Tags pages
     posts.forEach(({ node: { id, frontmatter: fm } }, index) => {
       if (fm.templateKey != null) {
@@ -122,13 +122,121 @@ exports.createPages = ({ actions, graphql }) => {
       }
     });
 
+    const blogPostsEl = posts.filter(({ node: { frontmatter: fm } }) =>
+      fm.templateKey === 'blog-post' && fm.locale === 'el');
+
+    const blogPostsEn = posts.filter(({ node: { frontmatter: fm } }) =>
+      fm.templateKey === 'blog-post' && fm.locale === 'en');
+
+    blogPostsEl.forEach(({ node: { id, frontmatter: fm, fields} }, index) => {
+      let prev, next;
+      const pathname = fields.slug;
+      const nextNode = index === 0 ? false : blogPostsEl[index - 1].node;
+      const prevNode = index === blogPostsEl.length - 1 ? false : blogPostsEl[index + 1].node;
+
+      if (prevNode) {
+        prev = {
+          to: prevNode.fields.slug,
+          title: prevNode.frontmatter.title,
+        };
+      }
+
+      if (nextNode) {
+        next = {
+          to: nextNode.fields.slug,
+          title: nextNode.frontmatter.title,
+        };
+      }
+
+      return createPage({
+        id,
+        path: pathname,
+        component: path.resolve(`src/templates/${String(fm.templateKey)}.js`),
+        context: {
+          id,
+          pathname,
+          prev,
+          next,
+          ...fm,
+        },
+      })
+    });
+
+    blogPostsEn.forEach(({ node: { id, frontmatter: fm, fields} }, index) => {
+      let prev, next;
+      const pathname = fields.slug;
+      const nextNode = index === 0 ? false : blogPostsEn[index - 1].node;
+      const prevNode = index === blogPostsEn.length - 1 ? false : blogPostsEn[index + 1].node;
+
+      if (prevNode) {
+        prev = {
+          to:  locales[fm.locale].path + prevNode.fields.slug,
+          title: prevNode.frontmatter.title,
+        };
+      }
+
+      if (nextNode) {
+        next = {
+          to:  locales[fm.locale].path + nextNode.fields.slug,
+          title: nextNode.frontmatter.title,
+        };
+      }
+
+      return createPage({
+        id,
+        path: locales[fm.locale].path + pathname,
+        component: path.resolve(`src/templates/${String(fm.templateKey)}.js`),
+        context: {
+          id,
+          pathname,
+          prev,
+          next,
+          ...fm,
+        },
+      })
+    });
+
     posts.forEach(({ node: { id, frontmatter: fm, fields} }, index) => {
-      if (fm.templateKey != null) {
+      if (fm.templateKey != null && fm.templateKey !== 'blog-post') {
         let prev, next;
         let localizedContext = {};
+        const pathname = fields.slug;
+/*
+        if (fm.templateKey === 'blog-post') {
+          const localizedPath = locales[fm.locale].default ? pathname : locales[fm.locale].path + pathname;
 
+          const nextNode = index === 0 ? false : posts[index - 1].node;
+          const prevNode = index === posts.length - 1 ? false : posts[index + 1].node;
+
+          if (prevNode && prevNode.frontmatter.type === fm.type) {
+            prev = {
+              to: locales[lang].default ? prevNode.fields.slug : locales[lang].path + prevNode.fields.slug,
+              title:  locales[lang].default ? prevNode.frontmatter.title : prevNode.frontmatter.titleEN,
+            };
+          }
+
+          if (nextNode && nextNode.frontmatter.type === fm.type) {
+            next = {
+              to: locales[lang].default ? nextNode.fields.slug : locales[lang].path + nextNode.fields.slug,
+              title:  locales[lang].default ? nextNode.frontmatter.title : nextNode.frontmatter.titleEN,
+            };
+          }
+
+          return createPage({
+            id,
+            path: localizedPath,
+            component: path.resolve(`src/templates/${String(fm.templateKey)}.js`),
+            context: {
+              id,
+              pathname,
+              prev,
+              next,
+              ...fm,
+            },
+          })
+        }
+*/
         Object.keys(locales).map(lang => {
-          const pathname = fields.slug;
           const localizedPath = locales[lang].default ? pathname : locales[lang].path + pathname;
           const localizedTitle = locales[lang].default ? fm.title : fm.titleEN;
           const localizedDescription = locales[lang].default ? fm.description : fm.descriptionEN;
@@ -165,7 +273,7 @@ exports.createPages = ({ actions, graphql }) => {
           }
 
           /* Add a previous and next url to the work-item and blog-post pages */
-          if (hasPrevNextLinks.includes(fm.templateKey)) {
+          if (fm.templateKey === 'work-item') {
             const nextNode = index === 0 ? false : posts[index - 1].node;
             const prevNode = index === posts.length - 1 ? false : posts[index + 1].node;
 

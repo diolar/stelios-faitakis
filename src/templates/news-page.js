@@ -7,12 +7,14 @@ import Page from '../components/Page';
 import {pattern3, pattern4} from '../constants/patterns';
 import Ni from '../components/lettersSvg/Ni';
 import {Link} from 'gatsby';
+import {graphql} from 'gatsby';
 
 const NewsPageTemplate = ({
   title,
   tags,
   locale,
   helmet,
+  news,
   }) => {
   return (
     <Page locale={locale}>
@@ -50,7 +52,7 @@ const NewsPageTemplate = ({
       </div>
 
       <div className="fade">
-        <NewsList locale={locale} />
+        <NewsList locale={locale} data={news} />
       </div>
     </Page>
   )
@@ -61,13 +63,14 @@ NewsPageTemplate.propTypes = {
   description: PropTypes.string,
 };
 
-const MewsPage = ({  pageContext: { title, description, tags, locale } }) => {
+const MewsPage = ({  pageContext: { title, description, tags, locale }, ...props }) => {
   return (
     <NewsPageTemplate
       title={title}
       description={description}
       locale={locale}
       tags={tags}
+      news={props.data}
       helmet={
         <Helmet>
           <title>{title}</title>
@@ -86,3 +89,41 @@ MewsPage.propTypes = {
 };
 
 export default MewsPage;
+
+export const newsQuery = graphql`
+    query NewsListQuery($locale: String) {
+        allMarkdownRemark(
+            sort: { order: DESC, fields: [frontmatter___date] }
+            filter: { frontmatter: { templateKey: { eq: "blog-post" }, locale: { eq: $locale } } }
+        ) {
+            edges {
+                node {
+                    excerpt(pruneLength: 280)
+                    id
+                    fields {
+                        slug
+                    }
+                    frontmatter {
+                        title
+                        templateKey
+                        date(formatString: "MMM DD, YYYY")
+                        featuredimage {
+                            childImageSharp {
+                                fluid(maxWidth: 280, quality: 50) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
+                        tags {
+                            tag
+                            title {
+                                el
+                                en
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+`

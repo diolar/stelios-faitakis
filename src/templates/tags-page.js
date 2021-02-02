@@ -54,11 +54,11 @@ TagsPage.propTypes = {
 export default TagsPage;
 
 export const tagPageQuery = graphql`
-    query TagPage($tag: String) {
+    query TagPage($tag: String, $locale: String) {
         allMarkdownRemark(
             limit: 1000
             sort: { fields: [frontmatter___date], order: DESC }
-            filter: { frontmatter: { tags: { elemMatch: { tag: { in: [$tag] }} }}}
+            filter: { frontmatter: { tags: { elemMatch: { tag: { in: [$tag] }} }, locale: { eq: $locale }}}
         ) {
             edges {
                 node {
