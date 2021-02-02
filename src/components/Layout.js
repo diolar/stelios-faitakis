@@ -8,7 +8,7 @@ import useSiteMetadata from './SiteMetadata';
 import BackToTop from '../components/BackToTop';
 import {transitionProps} from '../constants/settings';
 
-const TemplateWrapper = ({ children, pageContext: { locale, pathname } }) => {
+const TemplateWrapper = ({ children, pageContext: { locale, pathname, templateKey } }) => {
   const { title, description, headerTitle } = useSiteMetadata();
   const defaultLang = locale === 'el';
   return (
@@ -25,7 +25,7 @@ const TemplateWrapper = ({ children, pageContext: { locale, pathname } }) => {
       </Helmet>
 
       <div className="container">
-        <Header title={headerTitle[locale]} locale={locale} path={pathname} />
+        <Header title={headerTitle[locale]} locale={locale} path={pathname} hideLanguageSwitcher={templateKey === 'blog-post'} />
       </div>
       {children}
       <div className="credits">

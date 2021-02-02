@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql, StaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
 import Icon from '../Icon';
 import { shortArrow } from '../../constants/svg';
@@ -8,24 +8,25 @@ import './style.scss';
 
 const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => (
   <div className="post-list">
-    {posts &&
-    posts.map(({ node: post }) => (
+    {posts && posts.map(({ node: post }) => (
       <div key={post.id}>
         <article className="post">
           <div>
             {post.frontmatter.featuredimage ? (
-              <PreviewCompatibleImage
-                imageInfo={{
-                  image: post.frontmatter.featuredimage,
-                  alt: `featured image thumbnail for post ${post.frontmatter.title}`,
-                  className: 'post__thumb'
-                }}
-              />
+              <Link to={locale === 'en' ? `en${post.fields.slug}` : post.fields.slug}>
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: post.frontmatter.featuredimage,
+                    alt: `featured image thumbnail for post ${post.frontmatter.title}`,
+                    className: 'post__thumb'
+                  }}
+                />
+              </Link>
             ) : null}
           </div>
           <div className="post__content">
             <header className="post__header">
-              <Link to={post.fields.slug} className="post__title h2 heading">
+              <Link to={locale === 'en' ? `en${post.fields.slug}` : post.fields.slug} className="post__title h2 heading">
                 {post.frontmatter.title}
               </Link>
               <span className="post__date body">
@@ -43,7 +44,7 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
                     <path d="M311.484 9c-8.623 0-8.623-8-17.247-8-8.623 0-8.623 8-17.247 8-8.625 0-8.625-8-17.25-8-8.623 0-8.623 8-17.247 8s-8.624-8-17.249-8c-8.622 0-8.622 8-17.244 8-8.623 0-8.623-8-17.245-8-8.624 0-8.624 8-17.247 8-8.625 0-8.625-8-17.25-8-8.623 0-8.623 8-17.247 8s-8.624-8-17.248-8c-8.625 0-8.625 8-17.249 8-8.626 0-8.626-8-17.251-8-8.624 0-8.624 8-17.247 8-8.626 0-8.626-8-17.252-8-8.627 0-8.627 8-17.253 8-8.628 0-8.628-8-17.256-8S9.627 9 1 9" />
                   </svg>
                 </div>
-                <Link to={post.fields.slug} className="heading h3">
+                <Link to={locale === 'en' ? `en${post.fields.slug}` : post.fields.slug} className="heading h3">
                   <div className="label">
                     <div className="text">
                       {locale === 'en' ? 'more' : 'περισσότερα'}
@@ -91,45 +92,4 @@ NewsList.propTypes = {
   }),
 };
 
-export default ({ locale }) => (
-  <StaticQuery
-    query={graphql`
-      query BlogRollQuery {
-        allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
-        ) {
-          edges {
-            node {
-              excerpt(pruneLength: 280)
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags {
-                    tag
-                    title {
-                        el
-                        en
-                    }
-                }
-                templateKey
-                date(formatString: "MMM DD, YYYY")
-                featuredimage {
-                  childImageSharp {
-                    fluid(maxWidth: 280, quality: 50) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `}
-    render={(data) => <NewsList data={data} locale={locale} />}
-  />
-)
+export default NewsList;

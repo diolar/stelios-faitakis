@@ -1,5 +1,6 @@
 ---
 templateKey: blog-post
+locale: el
 title: Ατομική έκθεση στο Παρίσι, Γκαλερί Rabouan Moussion Νοέμβριος 2018 -
   Φεβρουάριος 2019
 date: 2020-10-04T11:03:33.688Z
