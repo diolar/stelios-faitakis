@@ -8,8 +8,7 @@ description: |
   June 2 - October 28, 2018
 featuredimage: /img/stelios-faitakis-greek-artist-riga_riboca1_2018_ie_left_part.jpg
 tags:
-  - tag: "#Paris #steliosfaitakis #parisshow #art #artcollector #rabouanmoussion
-      #parisartgallery"
+  - tag: NEWS
     title:
       el: Ατομική έκθεση στο Παρίσι
       en: Solo exhibition in Paris
