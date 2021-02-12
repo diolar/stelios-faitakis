@@ -89,6 +89,6 @@ timelineEvents:
     title: Palais de Tokyo
     year: "2013"
 publications: publications
-cvEl: /img/cv_el.pdf
-cvEn: /img/cv_en.pdf
+cvEl: /img/steliosfaitakis-cv-gr.pdf
+cvEn: /img/steliosfaitakis-cv-en.pdf
 ---
