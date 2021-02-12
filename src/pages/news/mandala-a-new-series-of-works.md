@@ -6,8 +6,7 @@ date: 2020-01-01T16:26:08.230Z
 description: "\n"
 featuredimage: /img/mandala1.jpg
 tags:
-  - tag: "#Paris #steliosfaitakis #parisshow #art #artcollector #rabouanmoussion
-      #parisartgallery"
+  - tag: Νέα
     title:
       el: Νέα
       en: News
