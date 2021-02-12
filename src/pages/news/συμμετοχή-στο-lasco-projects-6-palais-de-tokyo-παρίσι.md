@@ -5,7 +5,11 @@ title: "Συμμετοχή στο Lasco Projects #6, Palais de Tokyo, Παρίσ
 date: 2016-06-01T15:48:00.000Z
 description: "«Ελεγεία του Μάη» "
 featuredimage: /img/stelios-faitakis-greek-artist-paris_palais_de_tokyo_2016_photo-aurelien-mole_part1.jpg
-tags: []
+tags:
+  - tag: Publications
+    title:
+      el: Δημοσίευσεις
+      en: Publications
 ---
 
 
