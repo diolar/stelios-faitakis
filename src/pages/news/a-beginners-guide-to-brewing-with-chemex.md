@@ -6,7 +6,11 @@ description: seo description
 featuredimage: /img/stelios-faitakis-greek-artist-2019_skull.jpeg
 featuredpost: false
 date: 2017-01-04T15:04:10.000Z
-tags: []
+tags:
+  - tag: Publications
+    title:
+      en: Publications
+      el: Δημοσιεύσεις
 ---
 *Στη Ρίγα ο ήλιος μοιάζει να μη δύει ποτέ.*
 
