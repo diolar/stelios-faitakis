@@ -6,10 +6,10 @@ date: 2010-02-14T17:46:00.000Z
 description: "Editors:  Patrick Nguyen & Stuart Mackenzie"
 featuredimage: /img/img_3579.jpg
 tags:
-  - tag: News
+  - tag: Publications
     title:
-      en: News
-      el: Νέα
+      en: Publications
+      el: Δημοσιεύσεις
 ---
 Gestalten books | 2010
 
