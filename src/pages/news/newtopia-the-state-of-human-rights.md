@@ -6,10 +6,10 @@ date: 2010-02-14T17:44:00.000Z
 description: curated by Katerina Gregos
 featuredimage: /img/41abqyz9nkl._sx329_bo1-204-203-200_.jpg
 tags:
-  - tag: News
+  - tag: Publications
     title:
-      en: News
-      el: Νέα
+      en: Publications
+      el: Δημοσιεύσεις
 ---
 Mechelen, Belgium, 2010
 
