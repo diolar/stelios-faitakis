@@ -9,6 +9,6 @@ tags:
   - title:
       en: News
       el: Νέα
-    tag: "#news"
+    tag: News
 ---
 In the context of Lasco Projects # 6, curated by Hugo Vitrani, I painted a mural concerning the May '68 uprising, drawing comparisons with the current socio-political upheavals that are also taking place worldwide. Particular attention was paid to the structure of the Palais de Tokyo, as I adapted my composition according to the architectural elements of the Museum. I worked directly on the wall, dividing the mural into two parts, a visible-perceptible point of view of the work and a hidden one, the "latent" part that lies below the former. In this way, the work based on the architectural space of the Palais de Tokyo, defines the permanent and monumental character of the mural, emphasizing the historical relationship between painting and architecture.
