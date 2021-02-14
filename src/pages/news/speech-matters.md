@@ -8,9 +8,9 @@ description: >
   2011
 featuredimage: /img/danish.jpeg
 tags:
-  - tag: News
+  - tag: Publications
     title:
-      el: Νέα
-      en: News
+      el: Δημοσιεύσεις
+      en: Publications
 ---
 .
