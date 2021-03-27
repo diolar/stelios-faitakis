@@ -111,7 +111,7 @@ const WorkList = ({ data, locale }) => {
             }
 
             return (
-              <div key={id} className="case">
+              <div key={id} id={id} className="case">
                 {addDivider && (
                   <div className="grid grid--work-list grid--work-list-divider">
                     <div className="case__divider">

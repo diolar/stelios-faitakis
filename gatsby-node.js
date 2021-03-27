@@ -198,7 +198,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     posts.forEach(({ node: { id, frontmatter: fm, fields} }, index) => {
       if (fm.templateKey != null && fm.templateKey !== 'blog-post') {
-        let prev, next;
+        let prev, next, back;
         let localizedContext = {};
         const pathname = fields.slug;
 /*
@@ -272,7 +272,7 @@ exports.createPages = ({ actions, graphql }) => {
             };
           }
 
-          /* Add a previous and next url to the work-item and blog-post pages */
+          /* Add a previous and next url to the work-item page */
           if (fm.templateKey === 'work-item') {
             const nextNode = index === 0 ? false : posts[index - 1].node;
             const prevNode = index === posts.length - 1 ? false : posts[index + 1].node;
@@ -290,6 +290,8 @@ exports.createPages = ({ actions, graphql }) => {
                 title:  locales[lang].default ? nextNode.frontmatter.title : nextNode.frontmatter.titleEN,
               };
             }
+
+            back = `${locales[lang].default ? '/' : '/en/'}work?view=${fm.type}#${id}`;
           }
 
           return createPage({
@@ -306,6 +308,7 @@ exports.createPages = ({ actions, graphql }) => {
               pathname,
               prev,
               next,
+              back,
               ...localizedContext,
             },
           })
