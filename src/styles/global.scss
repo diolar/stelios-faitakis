@@ -203,6 +203,40 @@ body.portal-open {
   margin: 0;
 }
 
+.expandable {
+  display: inline-block;
+  white-space: pre-line;
+  
+  &:not(.expanded) {
+    .body {
+      display: -webkit-box;
+      -webkit-line-clamp: 8;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    button {
+      transform: rotate(0);
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    margin: 0.5rem auto 0;
+    transform: rotate(180deg);
+    transform-origin: center center;
+
+    .svgIcon {
+      font-size: 1rem;
+      fill: currentColor;
+      stroke: none;
+    }
+  }
+}
+
 .container {
   max-width: calc(#{$max-width} + 8rem);
   margin-left: auto;
