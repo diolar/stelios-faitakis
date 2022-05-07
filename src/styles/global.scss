@@ -662,7 +662,7 @@ body.portal-open {
 .grid {
   display: grid;
   column-gap: 5.2%;
-  grid-template-areas: ". . ";
+  row-gap: 2.6%;
 
   &--bio {
 
@@ -709,7 +709,15 @@ body.portal-open {
   }
 
   &--work-list {
-    grid-template-columns: 5.2% 82.825% 5.2%;
+    grid-template-columns: 5.2% auto;
+    //grid-template-rows: 1fr auto;
+
+    & *:last-child {
+      @media screen and (max-width: $min-width-md) {
+        grid-column: 2 / 3;
+      }
+    }
+
 
     @media screen and (min-width: #{$min-width-md}) {
       grid-template-columns: 17.175% 50% auto;
