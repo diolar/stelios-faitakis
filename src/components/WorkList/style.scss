@@ -3,6 +3,10 @@
     text-align: center;
   }
 
+  &__right {
+    position: relative;
+  }
+
   &__year {
     margin: 0 auto;
     word-break: break-all;
@@ -47,11 +51,33 @@
     }
   }
 
+  &__title {
+    .title {
+      color: #aeb0b3;
+    }
+
+    .cite {
+      color: #a2a4a7;
+
+      .svgIcon {
+        width: 50%;
+        stroke: none;
+        fill: currentColor;
+      }
+
+      .year {
+        line-height: 1.4;
+        font-size: 0.75em;
+        font-family: monospace;
+      }
+    }
+  }
+
   &__quote {
     margin-top: 2rem;
     font-size: 1rem;
 
-    blockquote {
+    blockquote, .blockquote {
       font-style: italic;
       line-height: 1.6;
       color: #aeb0b3;
@@ -77,7 +103,7 @@
         fill: currentColor;
       }
 
-      figcaption {
+      figcaption, .figcaption {
         line-height: 1.4;
         font-size: 0.75em;
         font-family: monospace;

@@ -91,6 +91,8 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     const posts = result.data.allMarkdownRemark.edges;
+
+    /*
     let tags = [];
     // Create Tags pages
     posts.forEach(({ node: { id, frontmatter: fm } }, index) => {
@@ -121,6 +123,7 @@ exports.createPages = ({ actions, graphql }) => {
         })
       }
     });
+   */
 
     const blogPostsEl = posts.filter(({ node: { frontmatter: fm } }) =>
       fm.templateKey === 'blog-post' && fm.locale === 'el');
@@ -261,14 +264,14 @@ exports.createPages = ({ actions, graphql }) => {
           }
 
           if (fm.templateKey === 'news-page') {
-            const localizedTags = tags.map(({ tag, title }) => ({
+            /*const localizedTags = tags.map(({ tag, title }) => ({
               tag,
               title: title[lang]
-            }));
+            }));*/
 
             localizedContext = {
               ...localizedContext,
-              tags: localizedTags,
+              tags: []//localizedTags,
             };
           }
 

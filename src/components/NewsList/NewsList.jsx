@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
-import Icon from '../Icon';
-import { shortArrow } from '../../constants/svg';
 import './style.scss';
 
 const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => (
@@ -29,10 +27,13 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
               <Link to={locale === 'en' ? `en${post.fields.slug}` : post.fields.slug} className="post__title h2 heading">
                 {post.frontmatter.title}
               </Link>
+              {/*
               <span className="post__date body">
                 <Icon {...shortArrow} />
                   {post.frontmatter.date}
-                </span>
+              </span>
+              */}
+
             </header>
             <p className="post__excerpt body">
               {post.excerpt}
@@ -59,7 +60,7 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
                   </div>
                 </Link>
               </div>
-              {(post.frontmatter.tags && post.frontmatter.tags.length > 0) && (
+              {/*(post.frontmatter.tags && post.frontmatter.tags.length > 0) && (
                 <div className="post__tags">
                   <span className="heading h4">Tags:</span>{` `}
                   <ul className="list list--horizontal">
@@ -75,7 +76,7 @@ const NewsList = ({ data: { allMarkdownRemark: { edges : posts }}, locale }) => 
                   </ul>
 
                 </div>
-              )}
+              )*/}
             </div>
           </div>
         </article>

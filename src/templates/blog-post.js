@@ -7,8 +7,6 @@ import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 import Page from '../components/Page';
 import Pagination from '../components/Pagination';
 import Ni from '../components/lettersSvg/Ni';
-import Icon from '../components/Icon';
-import { shortArrow } from '../constants/svg';
 import {transitionProps} from '../constants/settings';
 import Link from 'gatsby-plugin-transition-link';
 
@@ -42,10 +40,12 @@ export const BlogPostTemplate = ({
             <h1 className="h2 heading">
               {title}
             </h1>
+            {/*
             <span className="body post-page__date">
               <Icon {...shortArrow} />
               {date}
             </span>
+            */}
           </div>
 
 

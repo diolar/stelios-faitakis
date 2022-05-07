@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { uniq } from 'lodash';
+import uniq from 'lodash/uniq';
 import { Link, graphql, StaticQuery } from 'gatsby';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
 import Icon from '../Icon';
-import { iconMural, iconPainting, iconPaper, iconDivider, iconQuote, selectArrow } from '../../constants/svg';
+import { iconMural, iconPainting, iconPaper, iconDivider, selectArrow } from '../../constants/svg';
 import './style.scss';
 
 const tabValues = {
@@ -100,6 +100,7 @@ const WorkList = ({ data, locale }) => {
             </div>
           </div>
           {cases && cases.map(({ node: { id, fields, frontmatter: fm } }, index) => {
+            const title = prefix ? fm.titleEN : fm.title;
             const isFirst = index === 0;
             // We want to hide the identical years
             const isSameYear = !isFirst && fm.date === cases[index-1].node.frontmatter.date;
@@ -141,13 +142,13 @@ const WorkList = ({ data, locale }) => {
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: fm.image,
-                          alt: prefix ? fm.titleEN : fm.title,
+                          alt: title,
                         }}
                       />
                     </Link>
                   </div>
-                  <div className="hidden-sm">
-                    {fm.quote && (
+                  <div className="case__right">
+                    {/*fm.quote && (
                       <figure className="case__quote">
                         <blockquote>
                           {fm.quote.content}
@@ -159,7 +160,14 @@ const WorkList = ({ data, locale }) => {
                           </div>
                         )}
                       </figure>
-                    )}
+                    )*/}
+                    <div className="case__title">
+                      <span className="heading">{title}</span>
+                      <div className="cite">
+                        <span className="year">{fm.date}</span>
+                      </div>
+                    </div>
+
                   </div>
                 </article>
               </div>
@@ -196,6 +204,8 @@ export default ({ locale }) => (
                     slug
                 }
                 frontmatter {
+                  title
+                  titleEN
                   quote {
                     content
                     cite

@@ -6,7 +6,6 @@ import PageLetter from '../components/PageLetter';
 import Page from '../components/Page';
 import {pattern3, pattern4} from '../constants/patterns';
 import Ni from '../components/lettersSvg/Ni';
-import {Link} from 'gatsby';
 import {graphql} from 'gatsby';
 
 const NewsPageTemplate = ({
@@ -32,7 +31,7 @@ const NewsPageTemplate = ({
 
         <div className="order-2 fade">
           <h1 className="h1 heading heading--gutters">{title}</h1>
-          {(tags && tags.length > 0) && (
+          {/*(tags && tags.length > 0) && (
             <div className="post__tags">
               <span className="heading h4">Tags:</span>{` `}
               <ul className="list list--horizontal">
@@ -47,7 +46,7 @@ const NewsPageTemplate = ({
                 ))}
               </ul>
             </div>
-          )}
+          )*/}
         </div>
       </div>
 
