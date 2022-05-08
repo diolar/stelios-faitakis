@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://www.steliosfaitakis.com`,
     title: 'Στέλιος Φαϊτάκης',
     description: 'Στέλιος Φαϊτάκης Ιστοσελίδα',
     headerTitle: {
@@ -8,6 +9,7 @@ module.exports = {
     }
   },
   plugins: [
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
